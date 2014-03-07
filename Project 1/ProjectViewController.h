@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ProjectViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
+- (IBAction)nameEdited:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
 
 @end

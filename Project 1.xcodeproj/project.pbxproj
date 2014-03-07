@@ -21,6 +21,11 @@
 		6360493418C90CB600C0F14B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6360491618C90CB500C0F14B /* UIKit.framework */; };
 		6360493C18C90CB600C0F14B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6360493A18C90CB600C0F14B /* InfoPlist.strings */; };
 		6360493E18C90CB600C0F14B /* Project_1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6360493D18C90CB600C0F14B /* Project_1Tests.m */; };
+		63E7AD9B18CA19CD0086D496 /* ProjectUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E7AD9A18CA19CD0086D496 /* ProjectUser.m */; };
+		63E7AD9E18CA1AC00086D496 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E7AD9D18CA1AC00086D496 /* MainViewController.m */; };
+		63E7ADA118CA1C050086D496 /* JournalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E7ADA018CA1C050086D496 /* JournalViewController.m */; };
+		63E7ADA418CA1C110086D496 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E7ADA318CA1C110086D496 /* AlarmViewController.m */; };
+		63E7ADA718CA1C220086D496 /* SleepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E7ADA618CA1C220086D496 /* SleepViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,16 @@
 		6360493918C90CB600C0F14B /* Project 1Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Project 1Tests-Info.plist"; sourceTree = "<group>"; };
 		6360493B18C90CB600C0F14B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6360493D18C90CB600C0F14B /* Project_1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Project_1Tests.m; sourceTree = "<group>"; };
+		63E7AD9918CA19CD0086D496 /* ProjectUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectUser.h; sourceTree = "<group>"; };
+		63E7AD9A18CA19CD0086D496 /* ProjectUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectUser.m; sourceTree = "<group>"; };
+		63E7AD9C18CA1AC00086D496 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		63E7AD9D18CA1AC00086D496 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		63E7AD9F18CA1C050086D496 /* JournalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JournalViewController.h; sourceTree = "<group>"; };
+		63E7ADA018CA1C050086D496 /* JournalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalViewController.m; sourceTree = "<group>"; };
+		63E7ADA218CA1C100086D496 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
+		63E7ADA318CA1C110086D496 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
+		63E7ADA518CA1C220086D496 /* SleepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleepViewController.h; sourceTree = "<group>"; };
+		63E7ADA618CA1C220086D496 /* SleepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +130,18 @@
 				6360492118C90CB500C0F14B /* ProjectAppDelegate.h */,
 				6360492218C90CB500C0F14B /* ProjectAppDelegate.m */,
 				6360492418C90CB600C0F14B /* Main.storyboard */,
+				63E7AD9F18CA1C050086D496 /* JournalViewController.h */,
+				63E7ADA018CA1C050086D496 /* JournalViewController.m */,
+				63E7ADA218CA1C100086D496 /* AlarmViewController.h */,
+				63E7ADA318CA1C110086D496 /* AlarmViewController.m */,
+				63E7ADA518CA1C220086D496 /* SleepViewController.h */,
+				63E7ADA618CA1C220086D496 /* SleepViewController.m */,
+				63E7AD9C18CA1AC00086D496 /* MainViewController.h */,
+				63E7AD9D18CA1AC00086D496 /* MainViewController.m */,
 				6360492718C90CB600C0F14B /* ProjectViewController.h */,
 				6360492818C90CB600C0F14B /* ProjectViewController.m */,
+				63E7AD9918CA19CD0086D496 /* ProjectUser.h */,
+				63E7AD9A18CA19CD0086D496 /* ProjectUser.m */,
 				6360492A18C90CB600C0F14B /* Images.xcassets */,
 				6360491918C90CB500C0F14B /* Supporting Files */,
 			);
@@ -250,8 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E7ADA718CA1C220086D496 /* SleepViewController.m in Sources */,
+				63E7ADA118CA1C050086D496 /* JournalViewController.m in Sources */,
 				6360492318C90CB500C0F14B /* ProjectAppDelegate.m in Sources */,
 				6360492918C90CB600C0F14B /* ProjectViewController.m in Sources */,
+				63E7AD9B18CA19CD0086D496 /* ProjectUser.m in Sources */,
+				63E7ADA418CA1C110086D496 /* AlarmViewController.m in Sources */,
+				63E7AD9E18CA1AC00086D496 /* MainViewController.m in Sources */,
 				6360491F18C90CB500C0F14B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +491,7 @@
 				6360494318C90CB600C0F14B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6360494418C90CB600C0F14B /* Build configuration list for PBXNativeTarget "Project 1Tests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +500,7 @@
 				6360494618C90CB600C0F14B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
