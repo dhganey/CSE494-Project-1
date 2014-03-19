@@ -35,4 +35,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)alarmPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"alarmSegue" sender:self];
+}
+
+- (IBAction)journalPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"journalSegue" sender:self];
+}
+
+- (IBAction)sleepPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"sleepSegue" sender:self];
+}
 @end

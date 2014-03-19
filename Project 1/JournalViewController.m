@@ -7,12 +7,18 @@
 //
 
 #import "JournalViewController.h"
+#include "JournalItem.h"
+
+#define NUM_SECTIONS 1
 
 @interface JournalViewController ()
 
 @end
 
 @implementation JournalViewController
+{
+    NSMutableArray* entries;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,6 +38,11 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if (!entries)
+    {
+        entries = [[NSMutableArray alloc] init]; //TODO: update to work with Parse
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,16 +55,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return NUM_SECTIONS;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [entries count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,7 +68,13 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    JournalItem* item = [entries objectAtIndex:indexPath.row];
+    self.titleLabel.text = item.entryTitle;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM-dd-yyyy"];
+    NSString *stringFromDate = [formatter stringFromDate:item.entryDate];
+    self.dateLabel.text = stringFromDate;
     
     return cell;
 }

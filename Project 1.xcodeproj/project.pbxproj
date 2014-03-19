@@ -26,6 +26,9 @@
 		63E7ADA118CA1C050086D496 /* JournalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E7ADA018CA1C050086D496 /* JournalViewController.m */; };
 		63E7ADA418CA1C110086D496 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E7ADA318CA1C110086D496 /* AlarmViewController.m */; };
 		63E7ADA718CA1C220086D496 /* SleepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E7ADA618CA1C220086D496 /* SleepViewController.m */; };
+		63FCAE8A18DA2B8E00E3BC5A /* JournalItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8918DA2B8E00E3BC5A /* JournalItem.m */; };
+		63FCAE8D18DA319F00E3BC5A /* JournalEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8C18DA319F00E3BC5A /* JournalEntryViewController.m */; };
+		63FCAE9018DA31B000E3BC5A /* JournalAddEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,12 @@
 		63E7ADA318CA1C110086D496 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
 		63E7ADA518CA1C220086D496 /* SleepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleepViewController.h; sourceTree = "<group>"; };
 		63E7ADA618CA1C220086D496 /* SleepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepViewController.m; sourceTree = "<group>"; };
+		63FCAE8818DA2B8E00E3BC5A /* JournalItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JournalItem.h; sourceTree = "<group>"; };
+		63FCAE8918DA2B8E00E3BC5A /* JournalItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalItem.m; sourceTree = "<group>"; };
+		63FCAE8B18DA319F00E3BC5A /* JournalEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JournalEntryViewController.h; sourceTree = "<group>"; };
+		63FCAE8C18DA319F00E3BC5A /* JournalEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalEntryViewController.m; sourceTree = "<group>"; };
+		63FCAE8E18DA31B000E3BC5A /* JournalAddEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JournalAddEntryViewController.h; sourceTree = "<group>"; };
+		63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalAddEntryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +139,14 @@
 				6360492118C90CB500C0F14B /* ProjectAppDelegate.h */,
 				6360492218C90CB500C0F14B /* ProjectAppDelegate.m */,
 				6360492418C90CB600C0F14B /* Main.storyboard */,
+				63FCAE8B18DA319F00E3BC5A /* JournalEntryViewController.h */,
+				63FCAE8C18DA319F00E3BC5A /* JournalEntryViewController.m */,
+				63FCAE8E18DA31B000E3BC5A /* JournalAddEntryViewController.h */,
+				63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */,
 				63E7AD9F18CA1C050086D496 /* JournalViewController.h */,
 				63E7ADA018CA1C050086D496 /* JournalViewController.m */,
+				63FCAE8818DA2B8E00E3BC5A /* JournalItem.h */,
+				63FCAE8918DA2B8E00E3BC5A /* JournalItem.m */,
 				63E7ADA218CA1C100086D496 /* AlarmViewController.h */,
 				63E7ADA318CA1C110086D496 /* AlarmViewController.m */,
 				63E7ADA518CA1C220086D496 /* SleepViewController.h */,
@@ -277,10 +292,13 @@
 			files = (
 				63E7ADA718CA1C220086D496 /* SleepViewController.m in Sources */,
 				63E7ADA118CA1C050086D496 /* JournalViewController.m in Sources */,
+				63FCAE9018DA31B000E3BC5A /* JournalAddEntryViewController.m in Sources */,
+				63FCAE8A18DA2B8E00E3BC5A /* JournalItem.m in Sources */,
 				6360492318C90CB500C0F14B /* ProjectAppDelegate.m in Sources */,
 				6360492918C90CB600C0F14B /* ProjectViewController.m in Sources */,
 				63E7AD9B18CA19CD0086D496 /* ProjectUser.m in Sources */,
 				63E7ADA418CA1C110086D496 /* AlarmViewController.m in Sources */,
+				63FCAE8D18DA319F00E3BC5A /* JournalEntryViewController.m in Sources */,
 				63E7AD9E18CA1AC00086D496 /* MainViewController.m in Sources */,
 				6360491F18C90CB500C0F14B /* main.m in Sources */,
 			);

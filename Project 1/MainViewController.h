@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MainViewController : UIViewController
+- (IBAction)alarmPressed:(id)sender;
+- (IBAction)journalPressed:(id)sender;
+- (IBAction)sleepPressed:(id)sender;
 
 @end
