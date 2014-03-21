@@ -7,7 +7,8 @@
 //
 
 #import "ProjectViewController.h"
-#import "ProjectUser.h"
+
+#include "MainViewController.h"
 
 @interface ProjectViewController ()
 
@@ -29,12 +30,23 @@ ProjectUser *user;
     // Dispose of any resources that can be recreated.
 }
 
-
+/*
 - (IBAction)nameEdited:(id)sender
 {
     user.name = self.nameField.text;
     //TODO: take other info? end editing (implement keyboard hide methods). when user presses enter, call segue
 }
+*/
 
+- (IBAction)startPressed:(id)sender
+{
+    user.name = self.nameField.text;
+    [self performSegueWithIdentifier:@"startSegue" sender:self];
+}
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    MainViewController *nextVC = segue.destinationViewController;
+    nextVC.user = user;
+}
 @end

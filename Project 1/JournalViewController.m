@@ -20,6 +20,7 @@
     NSMutableArray* entries;
 }
 
+/*
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -28,10 +29,11 @@
     }
     return self;
 }
+ */
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    //[super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -47,7 +49,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
+    //[super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
@@ -65,16 +67,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JournalItem"];
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:111];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:222];
+
     JournalItem* item = [entries objectAtIndex:indexPath.row];
-    self.titleLabel.text = item.entryTitle;
+    titleLabel.text = item.entryTitle;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM-dd-yyyy"];
     NSString *stringFromDate = [formatter stringFromDate:item.entryDate];
-    self.dateLabel.text = stringFromDate;
+    dateLabel.text = stringFromDate;
     
     return cell;
 }

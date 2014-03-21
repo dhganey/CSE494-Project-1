@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JournalViewController : UITableViewController
-
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-
+@interface JournalViewController : UITableView
 
 @end

@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#include "ProjectUser.h"
+
 @interface MainViewController : UIViewController
+
 - (IBAction)alarmPressed:(id)sender;
 - (IBAction)journalPressed:(id)sender;
 - (IBAction)sleepPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *mainText;
+
+@property ProjectUser* user;
 
 @end

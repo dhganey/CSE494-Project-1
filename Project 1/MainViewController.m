@@ -8,6 +8,8 @@
 
 #import "MainViewController.h"
 
+//#include "ProjectUser.h"
+
 @interface MainViewController ()
 
 @end
@@ -27,6 +29,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    NSString* welcomeText = [NSString stringWithFormat:@"%@, what would you like to do?", self.user.name];
+    self.mainText.text = welcomeText;
 }
 
 - (void)didReceiveMemoryWarning
