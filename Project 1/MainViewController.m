@@ -28,9 +28,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    NSString* welcomeText = [NSString stringWithFormat:@"%@, what would you like to do?", self.user.name];
-    self.mainText.text = welcomeText;
+
+    if (!self.user) //just in case
+    {
+        self.user = [[ProjectUser alloc] init];
+        self.user.name = @"";
+    }
+    else
+    {
+        NSString* welcomeText = [NSString stringWithFormat:@"%@, what would you like to do?", self.user.name];
+        self.mainText.text = welcomeText;
+    }
 }
 
 - (void)didReceiveMemoryWarning

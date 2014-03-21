@@ -22,6 +22,7 @@ ProjectUser *user;
 {
     [super viewDidLoad];
     user = [[ProjectUser alloc] init];
+    user.name = @""; //just in case
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,7 +41,7 @@ ProjectUser *user;
 
 - (IBAction)startPressed:(id)sender
 {
-    user.name = self.nameField.text;
+    user.name = [self.nameField.text capitalizedString]; //capitalize username
     [self performSegueWithIdentifier:@"startSegue" sender:self];
 }
 

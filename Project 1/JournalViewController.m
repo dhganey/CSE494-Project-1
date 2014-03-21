@@ -7,6 +7,7 @@
 //
 
 #import "JournalViewController.h"
+
 #include "JournalItem.h"
 
 #define NUM_SECTIONS 1
@@ -45,6 +46,20 @@
     {
         entries = [[NSMutableArray alloc] init]; //TODO: update to work with Parse
     }
+    
+    NSString* testTitle = @"Test title 1";
+    NSString* testContent = @"There once was a man from Peru, who dreamed he was eating his shoe. He woke with a fright in the middle of the night to find that his dream had come true!";
+    NSDate *testDate = [NSDate date];
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+    testDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:testDate]];
+    
+    JournalItem* testItem = [[JournalItem alloc] init];
+    testItem.entryTitle = testTitle;
+    testItem.entryContent = testContent;
+    testItem.entryDate = testDate;
+    
+    [entries addObject:testItem];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,6 +83,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JournalItem"];
+    
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:111];
     UILabel *dateLabel = (UILabel *)[cell viewWithTag:222];
 
