@@ -8,6 +8,8 @@
 
 #import "JournalAddEntryViewController.h"
 
+#include "JournalViewController.h"
+
 @interface JournalAddEntryViewController ()
 
 @end
@@ -26,7 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    
+    [self setTitle:@"Add Entry"];
+    self.navigationController.navigationBar.topItem.title = @"Save Entry";
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,15 +40,34 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)depositText
+{
+    // Any additional checks to ensure you have the correct textField here.
+    [self.contentView endEditing:YES];
+    //[withdrawalText resignFirstResponder];
+    return true;
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    /*
+    JournalViewController* nextVC = segue.destinationViewController;
+    nextVC.createdContent = self.contentView.text;
+    nextVC.createdTitle = @"Newly Created Item";
+     */
+}
 
 @end

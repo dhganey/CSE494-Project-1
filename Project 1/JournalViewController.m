@@ -9,6 +9,7 @@
 #import "JournalViewController.h"
 
 #include "JournalItem.h"
+#include "JournalEntryViewController.h"
 
 #define NUM_SECTIONS 1
 
@@ -19,6 +20,9 @@
 @implementation JournalViewController
 {
     NSMutableArray* entries;
+    int selectedRow;
+    JournalItem* newItem;
+    bool viewing;
 }
 
 /*
@@ -41,6 +45,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    viewing = false;
     
     if (!entries)
     {
@@ -68,6 +74,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    viewing = false;
+    
+    if (self.createdTitle != nil)
+    {
+        JournalItem* myItem = [[JournalItem alloc] init];
+        myItem.entryTitle = self.createdTitle;
+        myItem.entryContent = self.createdContent;
+        NSDate *newDate = [NSDate date];
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+        newDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:newDate]];
+        myItem.entryDate = newDate;
+        
+        [entries addObject:newItem];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -91,35 +116,35 @@
     titleLabel.text = item.entryTitle;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM-dd-yyyy"];
+    [formatter setDateFormat:@"MM-dd-yy"];
     NSString *stringFromDate = [formatter stringFromDate:item.entryDate];
     dateLabel.text = stringFromDate;
     
     return cell;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+        [entries removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -137,16 +162,31 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if (viewing) //moving to view
+    {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        JournalEntryViewController* nextVC = segue.destinationViewController;
+        JournalItem* temp = [entries objectAtIndex:selectedRow];
+        nextVC.entryContent = temp.entryContent;
+    }
+    else //moving to add
+    {
+        
+    }
 }
 
- */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    viewing = true;
+    selectedRow = indexPath.row;
+    [self performSegueWithIdentifier:@"journalEntryViewSegue" sender:self];
+}
 
 @end

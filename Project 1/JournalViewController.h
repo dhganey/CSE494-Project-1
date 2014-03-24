@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+//#include "JournalItem.h"
+
 @interface JournalViewController : UIViewController
+
+@property NSString* createdContent;
+@property NSString* createdTitle;
 
 @end

@@ -10,4 +10,7 @@
 
 @interface JournalEntryViewController : UIViewController
 
+@property NSString* entryContent;
+@property (weak, nonatomic) IBOutlet UITextView *contentView;
+
 @end
