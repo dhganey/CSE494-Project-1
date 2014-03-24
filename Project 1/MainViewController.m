@@ -49,16 +49,16 @@
 
 - (IBAction)alarmPressed:(id)sender
 {
-    [self performSegueWithIdentifier:@"alarmSegue" sender:self];
+    //[self performSegueWithIdentifier:@"alarmSegue" sender:self];
 }
 
 - (IBAction)journalPressed:(id)sender
 {
-    [self performSegueWithIdentifier:@"journalSegue" sender:self];
+    //[self performSegueWithIdentifier:@"journalSegue" sender:self];
 }
 
 - (IBAction)sleepPressed:(id)sender
 {
-    [self performSegueWithIdentifier:@"sleepSegue" sender:self];
+    //[self performSegueWithIdentifier:@"sleepSegue" sender:self];
 }
 @end
