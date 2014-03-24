@@ -84,8 +84,8 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JournalItem"];
     
-    UILabel *titleLabel = (UILabel *)[cell viewWithTag:111];
-    UILabel *dateLabel = (UILabel *)[cell viewWithTag:222];
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:123];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:456];
 
     JournalItem* item = [entries objectAtIndex:indexPath.row];
     titleLabel.text = item.entryTitle;

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JournalViewController : UITableView
+@interface JournalViewController : UIViewController
 
 @end
