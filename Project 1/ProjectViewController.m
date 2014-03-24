@@ -39,6 +39,12 @@ ProjectUser *user;
 }
 */
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
+}
+
 - (IBAction)startPressed:(id)sender
 {
     user.name = [self.nameField.text capitalizedString]; //capitalize username
@@ -47,7 +53,8 @@ ProjectUser *user;
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    MainViewController *nextVC = segue.destinationViewController;
+    UINavigationController *navController = segue.destinationViewController;
+    MainViewController* nextVC = (MainViewController *) [navController topViewController];
     nextVC.user = user;
 }
 @end
