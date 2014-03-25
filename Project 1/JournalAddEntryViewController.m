@@ -12,6 +12,8 @@
 
 @interface JournalAddEntryViewController ()
 
+//synthesize property?
+
 @end
 
 @implementation JournalAddEntryViewController
@@ -58,7 +60,19 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    JournalItem* myItem = [[JournalItem alloc] init];
+    NSString *content = self.contentView.text;
+    NSString *title = @"Test title";
+    myItem.entryContent = content;
+    myItem.entryTitle = title;
+    NSDate *newDate = [NSDate date];
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+    newDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:newDate]];
+    myItem.entryDate = newDate;
     
+    [self.delegate addItemViewController:self didFinishEnteringItem:myItem];
+
 }
 
 -(void) viewWillDisappear:(BOOL)animated
@@ -67,7 +81,21 @@
     JournalViewController* nextVC = segue.destinationViewController;
     nextVC.createdContent = self.contentView.text;
     nextVC.createdTitle = @"Newly Created Item";
-     */
+    */ 
+    
+    JournalItem* myItem = [[JournalItem alloc] init];
+    NSString *content = self.contentView.text;
+    NSString *title = @"Test title";
+    myItem.entryContent = content;
+    myItem.entryTitle = title;
+    NSDate *newDate = [NSDate date];
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+    newDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:newDate]];
+    myItem.entryDate = newDate;
+
+    [self.delegate addItemViewController:self didFinishEnteringItem:myItem];
+    
 }
 
 @end

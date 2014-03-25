@@ -8,8 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+//#include "JournalEntryViewController.h"
+
+#include "JournalItem.h"
+
+@class JournalAddEntryViewController;
+
+@protocol JournalAddEntryViewControllerDelegate <NSObject>
+
+-(void) addItemViewController:(JournalAddEntryViewController *)controller didFinishEnteringItem:(JournalItem*) item;
+
+@end
+
 @interface JournalAddEntryViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextView *contentView;
+@property (nonatomic, weak) id <JournalAddEntryViewControllerDelegate> delegate;
 
 @end

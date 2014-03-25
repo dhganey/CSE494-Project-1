@@ -77,6 +77,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     viewing = false;
+    /*
+    viewing = false;
     
     if (self.createdTitle != nil)
     {
@@ -91,6 +93,7 @@
         
         [entries addObject:newItem];
     }
+     */
 }
 
 #pragma mark - Table view data source
@@ -178,7 +181,13 @@
     }
     else //moving to add
     {
-        
+        /*
+        JournalAddEntryViewController *nextVC = [[JournalAddEntryViewController alloc] initWithNibName:@"JournalAddEntryViewController" bundle:nil];
+        nextVC.delegate = self;
+        [[self navigationController] pushViewController:nextVC animated:YES];
+         */
+        JournalAddEntryViewController* nextVC = segue.destinationViewController;
+        nextVC.delegate = self;
     }
 }
 
@@ -187,6 +196,12 @@
     viewing = true;
     selectedRow = indexPath.row;
     [self performSegueWithIdentifier:@"journalEntryViewSegue" sender:self];
+}
+
+-(void) addItemViewController:(JournalAddEntryViewController *)controller didFinishEnteringItem:(JournalItem *)item
+{
+    [entries addObject:item];
+    [self.tableView reloadData];
 }
 
 @end
