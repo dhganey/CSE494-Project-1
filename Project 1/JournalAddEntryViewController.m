@@ -84,8 +84,19 @@
     */ 
     
     JournalItem* myItem = [[JournalItem alloc] init];
-    NSString *content = self.contentView.text;
-    NSString *title = @"Test title";
+    NSString *content = @"";
+    if (self.contentView.text != nil)
+    {
+        content = self.contentView.text;
+
+    }
+    NSString *title = @"";
+    if (self.titleView.text != nil)
+    {
+        title = self.titleView.text;
+    }
+    
+    
     myItem.entryContent = content;
     myItem.entryTitle = title;
     NSDate *newDate = [NSDate date];

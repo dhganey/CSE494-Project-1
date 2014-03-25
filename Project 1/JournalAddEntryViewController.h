@@ -23,6 +23,7 @@
 @interface JournalAddEntryViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextView *contentView;
+@property (weak, nonatomic) IBOutlet UITextField *titleView;
 @property (nonatomic, weak) id <JournalAddEntryViewControllerDelegate> delegate;
 
 @end
