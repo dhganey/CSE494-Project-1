@@ -23,6 +23,7 @@
     int selectedRow;
     JournalItem* newItem;
     bool viewing;
+    int rowEdited;
 }
 
 /*
@@ -76,7 +77,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    viewing = false;
+    //viewing = false;
     /*
     viewing = false;
     
@@ -175,9 +176,21 @@
     {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        /* just removed
         JournalEntryViewController* nextVC = segue.destinationViewController;
         JournalItem* temp = [entries objectAtIndex:selectedRow];
         nextVC.entryContent = temp.entryContent;
+         */
+        
+        JournalAddEntryViewController *nextVC = segue.destinationViewController;
+        nextVC.delegate = self;
+        JournalItem* temp = [entries objectAtIndex:selectedRow];
+        nextVC.entryContent = temp.entryContent;
+        nextVC.entryTitle = temp.entryTitle;
+        
+        //viewing = false;
+        rowEdited = selectedRow;
     }
     else //moving to add
     {
@@ -187,7 +200,10 @@
         [[self navigationController] pushViewController:nextVC animated:YES];
          */
         JournalAddEntryViewController* nextVC = segue.destinationViewController;
+        nextVC.entryTitle = @"New Post";
+        nextVC.entryContent = @"Type your note here";
         nextVC.delegate = self;
+        viewing = false;
     }
 }
 
@@ -195,12 +211,25 @@
 {
     viewing = true;
     selectedRow = indexPath.row;
-    [self performSegueWithIdentifier:@"journalEntryViewSegue" sender:self];
+    //[self performSegueWithIdentifier:@"journalEntryViewSegue" sender:self];
+    [self performSegueWithIdentifier:@"journalAddEntrySegue" sender:self];
 }
 
 -(void) addItemViewController:(JournalAddEntryViewController *)controller didFinishEnteringItem:(JournalItem *)item
 {
-    [entries addObject:item];
+
+    if (viewing) //simply update the content
+    {
+        JournalItem* temp = [entries objectAtIndex:rowEdited];
+        temp.entryTitle = item.entryTitle;
+        temp.entryContent = item.entryContent;
+        [entries replaceObjectAtIndex:rowEdited withObject:temp];
+        
+    }
+    else //add a new entry
+    {
+        [entries addObject:item];
+    }
     [self.tableView reloadData];
 }
 

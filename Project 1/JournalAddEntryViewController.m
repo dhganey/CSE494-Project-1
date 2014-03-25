@@ -30,9 +30,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.contentView.text = self.entryContent;
+    self.titleView.text = self.entryTitle;
     
     
-    [self setTitle:@"Add Entry"];
     self.navigationController.navigationBar.topItem.title = @"Save Entry";
 }
 
@@ -85,15 +86,19 @@
     
     JournalItem* myItem = [[JournalItem alloc] init];
     NSString *content = @"";
-    if (self.contentView.text != nil)
+    if (self.contentView.text != NULL)
     {
         content = self.contentView.text;
 
     }
     NSString *title = @"";
-    if (self.titleView.text != nil)
+    if ([self.titleView.text length] != 0)
     {
         title = self.titleView.text;
+    }
+    else
+    {
+        title = @"Title";
     }
     
     

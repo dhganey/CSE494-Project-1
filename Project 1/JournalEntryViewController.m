@@ -28,6 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.contentView.text = self.entryContent;
+    
+    self.navigationController.navigationBar.topItem.title = @"Back";
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -24,6 +24,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *contentView;
 @property (weak, nonatomic) IBOutlet UITextField *titleView;
+@property (weak, nonatomic) NSString* entryContent;
+@property (weak, nonatomic) NSString* entryTitle;
 @property (nonatomic, weak) id <JournalAddEntryViewControllerDelegate> delegate;
 
 @end
