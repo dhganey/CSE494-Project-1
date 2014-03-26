@@ -10,4 +10,11 @@
 
 @interface SleepViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *sleepLabel;
+- (IBAction)sleepButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *sleepButton;
+
+@property (strong, nonatomic) NSTimer* sleepTimer;
+@property (strong, nonatomic) NSDate* startDate;
+
 @end
