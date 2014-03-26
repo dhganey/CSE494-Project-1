@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JournalItem : NSObject
+@interface JournalItem : NSObject <NSCoding>
 
 @property NSString* entryTitle;
 @property NSString* entryContent;

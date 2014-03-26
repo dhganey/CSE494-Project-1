@@ -37,6 +37,70 @@
 }
  */
 
+-(NSString *) documentsDirectory
+{
+    return [@"~/Documents" stringByExpandingTildeInPath];
+}
+
+- (NSString *)dataFilePath
+{
+    NSLog(@"%@",[self documentsDirectory]);
+    return [[self documentsDirectory] stringByAppendingPathComponent:@"Checklist.plist"];
+}
+
+-(void) loadJournalItems
+{
+    NSString *path = [self dataFilePath];
+    
+    //do we have anything in our documents directory?  If we have anything then load it up
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+    {
+        // same way, except this time since we aren't adding anything to our data
+        // we don't need mutable data, just what we are loading
+        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+        // make an unarchiver, and point it to our data
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        entries = [unarchiver decodeObjectForKey:@"JournalItems"];
+        // we've finished choosing keys that we want, unpack them!
+        [unarchiver finishDecoding];
+    }
+    // if not then we'll just make a new storage
+    else
+    {
+        NSString* testTitle = @"Test title 1";
+        NSString* testContent = @"There once was a man from Peru, who dreamed he was eating his shoe. He woke with a fright in the middle of the night to find that his dream had come true!";
+        NSDate *testDate = [NSDate date];
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+        testDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:testDate]];
+        
+        JournalItem* testItem = [[JournalItem alloc] init];
+        testItem.entryTitle = testTitle;
+        testItem.entryContent = testContent;
+        testItem.entryDate = testDate;
+        
+        [entries addObject:testItem];
+
+    }
+}
+
+-(void) saveJournalItems
+{
+    // create a generic data storage object
+    NSMutableData *data = [[NSMutableData alloc] init];
+    // tell the archiver to use the storage we jut allocated, the archiver will do the
+    // encoding steps and then write the result into that data object
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:entries forKey:@"JournalItems"];
+    // this is an important step to say that we are done adding items to encode
+    // and we want the data to be encoded now
+    // the archiver waits until it is finished so it is able to get the most efficient
+    // encoding of the data
+    [archiver finishEncoding];
+    [data writeToFile:[self dataFilePath] atomically:YES];
+}
+
+
 - (void)viewDidLoad
 {
     //[super viewDidLoad];
@@ -54,19 +118,8 @@
         entries = [[NSMutableArray alloc] init]; //TODO: update to work with Parse
     }
     
-    NSString* testTitle = @"Test title 1";
-    NSString* testContent = @"There once was a man from Peru, who dreamed he was eating his shoe. He woke with a fright in the middle of the night to find that his dream had come true!";
-    NSDate *testDate = [NSDate date];
-    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
-    testDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:testDate]];
+    [self loadJournalItems];
     
-    JournalItem* testItem = [[JournalItem alloc] init];
-    testItem.entryTitle = testTitle;
-    testItem.entryContent = testContent;
-    testItem.entryDate = testDate;
-    
-    [entries addObject:testItem];
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,7 +130,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    //viewing = false;
+    viewing = false;
     /*
     viewing = false;
     
@@ -95,6 +148,8 @@
         [entries addObject:newItem];
     }
      */
+    
+    [self saveJournalItems];
 }
 
 #pragma mark - Table view data source
@@ -146,7 +201,9 @@
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
+    
+    [self saveJournalItems];
 }
 
 
@@ -205,6 +262,13 @@
         nextVC.delegate = self;
         viewing = false;
     }
+    
+    [self saveJournalItems];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self saveJournalItems];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
