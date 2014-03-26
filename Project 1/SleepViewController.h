@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *sleepLabel;
 - (IBAction)sleepButtonPressed:(id)sender;
+- (IBAction)historyPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *sleepButton;
 
 @property (strong, nonatomic) NSTimer* sleepTimer;

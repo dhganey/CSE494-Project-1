@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63237E5018E352420073161B /* SleepItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 63237E4F18E352420073161B /* SleepItem.m */; };
+		63237E5318E352C90073161B /* SleepTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63237E5218E352C90073161B /* SleepTableViewController.m */; };
 		6360491318C90CB500C0F14B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6360491218C90CB500C0F14B /* Foundation.framework */; };
 		6360491518C90CB500C0F14B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6360491418C90CB500C0F14B /* CoreGraphics.framework */; };
 		6360491718C90CB500C0F14B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6360491618C90CB500C0F14B /* UIKit.framework */; };
@@ -42,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63237E4E18E352420073161B /* SleepItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleepItem.h; sourceTree = "<group>"; };
+		63237E4F18E352420073161B /* SleepItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepItem.m; sourceTree = "<group>"; };
+		63237E5118E352C90073161B /* SleepTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleepTableViewController.h; sourceTree = "<group>"; };
+		63237E5218E352C90073161B /* SleepTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepTableViewController.m; sourceTree = "<group>"; };
 		6360490F18C90CB500C0F14B /* Project 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6360491218C90CB500C0F14B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6360491418C90CB500C0F14B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -151,6 +157,10 @@
 				63E7ADA318CA1C110086D496 /* AlarmViewController.m */,
 				63E7ADA518CA1C220086D496 /* SleepViewController.h */,
 				63E7ADA618CA1C220086D496 /* SleepViewController.m */,
+				63237E4E18E352420073161B /* SleepItem.h */,
+				63237E4F18E352420073161B /* SleepItem.m */,
+				63237E5118E352C90073161B /* SleepTableViewController.h */,
+				63237E5218E352C90073161B /* SleepTableViewController.m */,
 				63E7AD9C18CA1AC00086D496 /* MainViewController.h */,
 				63E7AD9D18CA1AC00086D496 /* MainViewController.m */,
 				6360492718C90CB600C0F14B /* ProjectViewController.h */,
@@ -291,7 +301,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				63E7ADA718CA1C220086D496 /* SleepViewController.m in Sources */,
+				63237E5318E352C90073161B /* SleepTableViewController.m in Sources */,
 				63E7ADA118CA1C050086D496 /* JournalViewController.m in Sources */,
+				63237E5018E352420073161B /* SleepItem.m in Sources */,
 				63FCAE9018DA31B000E3BC5A /* JournalAddEntryViewController.m in Sources */,
 				63FCAE8A18DA2B8E00E3BC5A /* JournalItem.m in Sources */,
 				6360492318C90CB500C0F14B /* ProjectAppDelegate.m in Sources */,

@@ -56,6 +56,11 @@
     }
 }
 
+- (IBAction)historyPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"sleepTableViewSegue" sender:self];
+}
+
 -(void) updateTimer
 {
     NSDate *currentDate = [NSDate date];

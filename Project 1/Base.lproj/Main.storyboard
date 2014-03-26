@@ -213,15 +213,60 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sleep Timer" id="cdU-rH-o6Z"/>
+                    <navigationItem key="navigationItem" title="Sleep Timer" id="cdU-rH-o6Z">
+                        <barButtonItem key="rightBarButtonItem" title="History" id="o8t-41-kEN">
+                            <connections>
+                                <action selector="historyPressed:" destination="z7c-cS-KIe" id="4VR-Re-FWD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="sleepButton" destination="6IJ-dr-SVw" id="AxA-cQ-vA4"/>
                         <outlet property="sleepLabel" destination="Qo7-Gb-eiM" id="O3v-h8-DGD"/>
+                        <segue destination="30c-AH-4Tz" kind="push" identifier="sleepTableViewSegue" id="QCJ-qu-35B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="khg-XS-S8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2682" y="919"/>
+        </scene>
+        <!--Sleep Table View Controller - Sleep History-->
+        <scene sceneID="aEO-fC-rnX">
+            <objects>
+                <tableViewController id="30c-AH-4Tz" customClass="SleepTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Beg-DT-I6R">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sleepItem" id="s6C-LS-JAe">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s6C-LS-JAe" id="N9k-GU-kfT">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="333" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oo7-Q6-AeD">
+                                            <rect key="frame" x="50" y="11" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="30c-AH-4Tz" id="MrS-vb-Gsv"/>
+                            <outlet property="delegate" destination="30c-AH-4Tz" id="W5H-78-SOP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Sleep History" id="gfX-hI-1Ht"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1KW-qt-Pez" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3131" y="1291"/>
         </scene>
         <!--Journal View Controller - JournalViewController-->
         <scene sceneID="rz9-tT-IY8">
