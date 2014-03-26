@@ -19,23 +19,12 @@
 
 @implementation JournalViewController
 {
-    NSMutableArray* entries;
-    int selectedRow;
+    NSMutableArray* entries; //contains all entries in the table
+    int selectedRow; //set when user clicks a row
     JournalItem* newItem;
-    bool viewing;
-    int rowEdited;
+    bool viewing; //determines whether to create a new node, or update the old one, when returning from Add controller
+    int rowEdited; //redundant? don't delete
 }
-
-/*
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
- */
 
 -(NSString *) documentsDirectory
 {
@@ -48,6 +37,7 @@
     return [[self documentsDirectory] stringByAppendingPathComponent:@"Checklist.plist"];
 }
 
+//Loads the array of entries from local storage
 -(void) loadJournalItems
 {
     NSString *path = [self dataFilePath];
@@ -84,6 +74,7 @@
     }
 }
 
+//Saves the array of entries from local storage
 -(void) saveJournalItems
 {
     // create a generic data storage object
@@ -100,7 +91,7 @@
     [data writeToFile:[self dataFilePath] atomically:YES];
 }
 
-
+//Initializes the array and loads it from local storage
 - (void)viewDidLoad
 {
     //[super viewDidLoad];
@@ -128,6 +119,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Sets boolean value and saves journal items
 -(void)viewWillAppear:(BOOL)animated
 {
     viewing = false;
@@ -189,7 +181,6 @@
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-
 
 
 // Override to support editing the table view.
@@ -266,6 +257,7 @@
     [self saveJournalItems];
 }
 
+//Saves the items
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self saveJournalItems];

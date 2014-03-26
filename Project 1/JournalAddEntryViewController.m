@@ -18,6 +18,7 @@
 
 @implementation JournalAddEntryViewController
 
+//Initializes the entry
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,6 +28,7 @@
     return self;
 }
 
+//Sets the text in the view to the content passed to the view controller from JournalViewController
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,12 +45,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Hides the keyboard when touched (does not work in UITextArea)
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
     [super touchesBegan:touches withEvent:event];
 }
 
+//Should hide the keyboard when return pressed
 - (BOOL)textFieldShouldReturn:(UITextField *)depositText
 {
     // Any additional checks to ensure you have the correct textField here.
@@ -59,6 +63,8 @@
 
 #pragma mark - Navigation
 
+//DEPRICATED--does not execute
+//When segueing, creates a new JournalItem with the content in the view and passes it back to its delegate
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     JournalItem* myItem = [[JournalItem alloc] init];
@@ -76,6 +82,7 @@
 
 }
 
+//When view is going to disappear, creates a new JournalItem with content in view and passes it back to its delegate (JournalViewController)
 -(void) viewWillDisappear:(BOOL)animated
 {
     /*

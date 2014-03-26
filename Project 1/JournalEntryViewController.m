@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Ganey/Alfheim Industries. All rights reserved.
 //
 
+//NOTE: THIS CLASS IS NOW DEPRICATED AND IS NOT USED AT ALL IN THIS PROJECT
+
 #import "JournalEntryViewController.h"
 
 @interface JournalEntryViewController ()
