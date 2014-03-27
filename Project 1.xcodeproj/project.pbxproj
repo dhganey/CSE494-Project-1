@@ -31,6 +31,8 @@
 		63FCAE8A18DA2B8E00E3BC5A /* JournalItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8918DA2B8E00E3BC5A /* JournalItem.m */; };
 		63FCAE8D18DA319F00E3BC5A /* JournalEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8C18DA319F00E3BC5A /* JournalEntryViewController.m */; };
 		63FCAE9018DA31B000E3BC5A /* JournalAddEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */; };
+		A5A2468018E39772000D203A /* AlarmItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A2467F18E39772000D203A /* AlarmItem.m */; };
+		A5A2468318E398DA000D203A /* AlarmTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A2468218E398DA000D203A /* AlarmTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		63FCAE8C18DA319F00E3BC5A /* JournalEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalEntryViewController.m; sourceTree = "<group>"; };
 		63FCAE8E18DA31B000E3BC5A /* JournalAddEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JournalAddEntryViewController.h; sourceTree = "<group>"; };
 		63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalAddEntryViewController.m; sourceTree = "<group>"; };
+		A5A2467E18E39772000D203A /* AlarmItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmItem.h; sourceTree = "<group>"; };
+		A5A2467F18E39772000D203A /* AlarmItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmItem.m; sourceTree = "<group>"; };
+		A5A2468118E398DA000D203A /* AlarmTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmTableViewController.h; sourceTree = "<group>"; };
+		A5A2468218E398DA000D203A /* AlarmTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,32 +148,14 @@
 		6360491818C90CB500C0F14B /* Project 1 */ = {
 			isa = PBXGroup;
 			children = (
-				6360492118C90CB500C0F14B /* ProjectAppDelegate.h */,
-				6360492218C90CB500C0F14B /* ProjectAppDelegate.m */,
+				A59918C318E3815100E9DBA0 /* Alarm */,
+				6360492A18C90CB600C0F14B /* Images.xcassets */,
+				A59918C718E3836D00E9DBA0 /* Journal */,
 				6360492418C90CB600C0F14B /* Main.storyboard */,
-				63FCAE8B18DA319F00E3BC5A /* JournalEntryViewController.h */,
-				63FCAE8C18DA319F00E3BC5A /* JournalEntryViewController.m */,
-				63FCAE8E18DA31B000E3BC5A /* JournalAddEntryViewController.h */,
-				63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */,
-				63E7AD9F18CA1C050086D496 /* JournalViewController.h */,
-				63E7ADA018CA1C050086D496 /* JournalViewController.m */,
-				63FCAE8818DA2B8E00E3BC5A /* JournalItem.h */,
-				63FCAE8918DA2B8E00E3BC5A /* JournalItem.m */,
-				63E7ADA218CA1C100086D496 /* AlarmViewController.h */,
-				63E7ADA318CA1C110086D496 /* AlarmViewController.m */,
-				63E7ADA518CA1C220086D496 /* SleepViewController.h */,
-				63E7ADA618CA1C220086D496 /* SleepViewController.m */,
-				63237E4E18E352420073161B /* SleepItem.h */,
-				63237E4F18E352420073161B /* SleepItem.m */,
-				63237E5118E352C90073161B /* SleepTableViewController.h */,
-				63237E5218E352C90073161B /* SleepTableViewController.m */,
 				63E7AD9C18CA1AC00086D496 /* MainViewController.h */,
 				63E7AD9D18CA1AC00086D496 /* MainViewController.m */,
-				6360492718C90CB600C0F14B /* ProjectViewController.h */,
-				6360492818C90CB600C0F14B /* ProjectViewController.m */,
-				63E7AD9918CA19CD0086D496 /* ProjectUser.h */,
-				63E7AD9A18CA19CD0086D496 /* ProjectUser.m */,
-				6360492A18C90CB600C0F14B /* Images.xcassets */,
+				A59918C818E3838400E9DBA0 /* Project */,
+				A59918C918E3839800E9DBA0 /* Sleep */,
 				6360491918C90CB500C0F14B /* Supporting Files */,
 			);
 			path = "Project 1";
@@ -200,6 +188,60 @@
 				6360493A18C90CB600C0F14B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A59918C318E3815100E9DBA0 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				63E7ADA218CA1C100086D496 /* AlarmViewController.h */,
+				63E7ADA318CA1C110086D496 /* AlarmViewController.m */,
+				A5A2467E18E39772000D203A /* AlarmItem.h */,
+				A5A2467F18E39772000D203A /* AlarmItem.m */,
+				A5A2468118E398DA000D203A /* AlarmTableViewController.h */,
+				A5A2468218E398DA000D203A /* AlarmTableViewController.m */,
+			);
+			name = Alarm;
+			sourceTree = "<group>";
+		};
+		A59918C718E3836D00E9DBA0 /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				63FCAE8E18DA31B000E3BC5A /* JournalAddEntryViewController.h */,
+				63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */,
+				63FCAE8B18DA319F00E3BC5A /* JournalEntryViewController.h */,
+				63FCAE8C18DA319F00E3BC5A /* JournalEntryViewController.m */,
+				63FCAE8818DA2B8E00E3BC5A /* JournalItem.h */,
+				63FCAE8918DA2B8E00E3BC5A /* JournalItem.m */,
+				63E7AD9F18CA1C050086D496 /* JournalViewController.h */,
+				63E7ADA018CA1C050086D496 /* JournalViewController.m */,
+			);
+			name = Journal;
+			sourceTree = "<group>";
+		};
+		A59918C818E3838400E9DBA0 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				6360492118C90CB500C0F14B /* ProjectAppDelegate.h */,
+				6360492218C90CB500C0F14B /* ProjectAppDelegate.m */,
+				63E7AD9918CA19CD0086D496 /* ProjectUser.h */,
+				63E7AD9A18CA19CD0086D496 /* ProjectUser.m */,
+				6360492718C90CB600C0F14B /* ProjectViewController.h */,
+				6360492818C90CB600C0F14B /* ProjectViewController.m */,
+			);
+			name = Project;
+			sourceTree = "<group>";
+		};
+		A59918C918E3839800E9DBA0 /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				63237E4E18E352420073161B /* SleepItem.h */,
+				63237E4F18E352420073161B /* SleepItem.m */,
+				63237E5118E352C90073161B /* SleepTableViewController.h */,
+				63237E5218E352C90073161B /* SleepTableViewController.m */,
+				63E7ADA518CA1C220086D496 /* SleepViewController.h */,
+				63E7ADA618CA1C220086D496 /* SleepViewController.m */,
+			);
+			name = Sleep;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,8 +342,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A2468318E398DA000D203A /* AlarmTableViewController.m in Sources */,
 				63E7ADA718CA1C220086D496 /* SleepViewController.m in Sources */,
 				63237E5318E352C90073161B /* SleepTableViewController.m in Sources */,
+				A5A2468018E39772000D203A /* AlarmItem.m in Sources */,
 				63E7ADA118CA1C050086D496 /* JournalViewController.m in Sources */,
 				63237E5018E352420073161B /* SleepItem.m in Sources */,
 				63FCAE9018DA31B000E3BC5A /* JournalAddEntryViewController.m in Sources */,

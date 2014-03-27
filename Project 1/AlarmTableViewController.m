@@ -1,25 +1,28 @@
+/* depricated
+
 //
-//  AlarmViewController.m
+//  AlarmTableViewController.m
 //  Project 1
 //
-//  Created by Connor Alfheim on 3/7/14.
+//  Created by Connor Alfheim on 3/26/14.
 //  Copyright (c) 2014 Ganey/Alfheim Industries. All rights reserved.
 //
-/*
- *TODO:
-    create nsmutable array of alarm items
-    attach alarm object to this
-    have prototype cells display items from this index
-    create the initialization view
- */
-#import "AlarmViewController.h"
 
-@interface AlarmViewController ()
+#import "AlarmTableViewController.h"
+#define NUM_SECTIONS 1
+
+@interface AlarmTableViewController ()
 
 @end
 
-@implementation AlarmViewController
-
+@implementation AlarmTableViewController
+{
+    NSMutableArray* alarms; //contains all entries in the table
+    int selectedRow; //set when user clicks a row
+    AlarmItem* newAlarm;
+    bool viewing; //determines whether to create a new node, or update the old one, when returning from Add controller
+    int rowEdited; //redundant? don't delete
+}
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -38,7 +41,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,9 +53,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return NUM_SECTIONS;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -66,15 +67,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlarmItem"];
-    //title of cell
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:0];
     titleLabel.text = [NSString stringWithFormat:@"Title: %d", indexPath.row];
-    // alarm switch
-    UISwitch *alarmSwitch = [cell.contentView viewWithTag:100];
-    alarmSwitch.on = false;
     return cell;
 }
-
 
 /*
 // Override to support conditional editing of the table view.
@@ -113,9 +109,8 @@
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -125,6 +120,7 @@
     // Pass the selected object to the new view controller.
 }
 
- */
+ 
 
 @end
+ */
