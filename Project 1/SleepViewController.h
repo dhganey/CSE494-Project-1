@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#include "SleepTableViewController.h"
+
+#include "SLeepItem.h"
+
 @interface SleepViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *sleepLabel;

@@ -18,7 +18,7 @@
 
 @implementation SleepTableViewController
 {
-    NSMutableArray *entries;
+    //NSMutableArray *entries;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -39,6 +39,18 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if (!self.entries)
+    {
+        self.entries = [[NSMutableArray alloc] init];
+    }
+    
+    //[self loadSleepItems];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    //[self saveSleepItems];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,7 +70,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [entries count];
+    return [self.entries count];
 }
 
 
@@ -66,14 +78,19 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sleepItem" forIndexPath:indexPath];
     
-    UILabel *dateLabel = (UILabel *)[cell viewWithTag:333];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:567];
+    UILabel *sleptLabel = (UILabel *)[cell viewWithTag:333];
     
-    SleepItem* item = [entries objectAtIndex:indexPath.row];
+    SleepItem *temp = [self.entries objectAtIndex:indexPath.row];
+    NSString *dateSlept = temp.dateSlept;
+    NSString *timeSlept = temp.timeSlept;
     
-    dateLabel.text = @"Testing label";
+    dateLabel.text = dateSlept;
+    sleptLabel.text = timeSlept;
     
     return cell;
 }
+
 
 
 /*

@@ -10,4 +10,7 @@
 
 @interface SleepTableViewController : UITableViewController
 
+@property NSMutableArray *entries;
+@property NSMutableString *entries2;
+
 @end

@@ -10,6 +10,7 @@
 
 @interface SleepItem : NSObject <NSCoding>
 
-@property NSDate *time;
+@property NSString *timeSlept;
+@property NSString *dateSlept;
 
 @end

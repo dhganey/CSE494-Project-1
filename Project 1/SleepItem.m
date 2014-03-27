@@ -14,14 +14,16 @@
 {
     if ((self = [super init]))
     {
-        self.time = [aDecoder decodeObjectForKey:@"time"];
+        self.dateSlept = [aDecoder decodeObjectForKey:@"dateSlept"];
+        self.timeSlept = [aDecoder decodeObjectForKey:@"timeSlept"];
     }
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.time forKey:@"time"];
+    [aCoder encodeObject:self.dateSlept forKey:@"dateSlept"];
+    [aCoder encodeObject:self.timeSlept forKey:@"timeSlept"];
 }
 
 @end
