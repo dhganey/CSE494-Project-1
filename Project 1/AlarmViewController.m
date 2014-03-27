@@ -13,13 +13,20 @@
     create the initialization view
  */
 #import "AlarmViewController.h"
+#import "AlarmItem.h"
 
 @interface AlarmViewController ()
 
 @end
 
 @implementation AlarmViewController
-
+{
+    NSMutableArray* alarms; //contains all entries in the table
+    int selectedRow; //set when user clicks a row
+    AlarmItem* newAlarm;
+    bool viewing; //determines whether to create a new node, or update the old one, when returning from Add controller
+    int rowEdited; //redundant? don't delete
+}
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -38,8 +45,11 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    newAlarm = [[AlarmItem alloc] init];
+    alarms  = [[NSMutableArray alloc] init];
+    [alarms addObject:newAlarm];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -51,27 +61,34 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 50;
+    return [alarms count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlarmItem"];
+    
     //title of cell
-    UILabel *titleLabel = (UILabel *)[cell viewWithTag:0];
-    titleLabel.text = [NSString stringWithFormat:@"Title: %d", indexPath.row];
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:1];
+    AlarmItem *cellAlarm = [alarms objectAtIndex:indexPath.row];
+    titleLabel.text = cellAlarm.title;
+    
+    //time of alarm
+    UILabel *timeLabel = (UILabel *) [cell viewWithTag:2];
+    timeLabel.text = [NSString stringWithFormat:@"%i:%.2i",
+                      [cellAlarm.hours integerValue], [cellAlarm.minutes integerValue]];
+    
+    
     // alarm switch
-    UISwitch *alarmSwitch = [cell.contentView viewWithTag:100];
-    alarmSwitch.on = false;
+    UISwitch *alarmSwitch = (UISwitch *)[cell.contentView viewWithTag:100];
+    alarmSwitch.on = [cellAlarm.isOn boolValue];
     return cell;
 }
 
