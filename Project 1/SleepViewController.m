@@ -35,11 +35,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self loadSleepItems];
     if (!entries)
     {
         entries = [[NSMutableArray alloc] init];
     }
+    
+    [self loadSleepItems];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,7 +120,7 @@
 
 -(NSString *) documentsDirectory
 {
-    return [@"~/Documents" stringByExpandingTildeInPath];
+    return [@"~/Documents/Sleep" stringByExpandingTildeInPath];
 }
 
 - (NSString *)dataFilePath
