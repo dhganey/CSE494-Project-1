@@ -28,7 +28,7 @@
 
 -(NSString *) documentsDirectory
 {
-    return [@"~/Documents" stringByExpandingTildeInPath];
+    return [@"~/Documents/Journal" stringByExpandingTildeInPath];
 }
 
 - (NSString *)dataFilePath
@@ -108,8 +108,12 @@
     {
         entries = [[NSMutableArray alloc] init]; //TODO: update to work with Parse
     }
+
     
     [self loadJournalItems];
+    
+    
+    NSLog(@"%@", entries);
     
 }
 
