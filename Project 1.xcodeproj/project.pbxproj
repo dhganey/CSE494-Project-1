@@ -32,6 +32,9 @@
 		63FCAE8D18DA319F00E3BC5A /* JournalEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8C18DA319F00E3BC5A /* JournalEntryViewController.m */; };
 		63FCAE9018DA31B000E3BC5A /* JournalAddEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */; };
 		A53FF06418E499CE00DB45E0 /* WeekItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A53FF06318E499CE00DB45E0 /* WeekItem.m */; };
+		A59D208118E633ED00053791 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D208018E633ED00053791 /* MediaPlayer.framework */; };
+		A59D208318E637E800053791 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D208218E637E800053791 /* AVFoundation.framework */; };
+		A59D208518E63A8E00053791 /* audioTest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A59D208418E63A8E00053791 /* audioTest.mp3 */; };
 		A5A2468018E39772000D203A /* AlarmItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A2467F18E39772000D203A /* AlarmItem.m */; };
 		A5D8E40B18E4CDF600CA66D4 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D8E40A18E4CDF600CA66D4 /* AddAlarmViewController.m */; };
 /* End PBXBuildFile section */
@@ -88,6 +91,9 @@
 		63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalAddEntryViewController.m; sourceTree = "<group>"; };
 		A53FF06218E499CE00DB45E0 /* WeekItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekItem.h; sourceTree = "<group>"; };
 		A53FF06318E499CE00DB45E0 /* WeekItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekItem.m; sourceTree = "<group>"; };
+		A59D208018E633ED00053791 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		A59D208218E637E800053791 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A59D208418E63A8E00053791 /* audioTest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audioTest.mp3; sourceTree = "<group>"; };
 		A5A2467E18E39772000D203A /* AlarmItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmItem.h; sourceTree = "<group>"; };
 		A5A2467F18E39772000D203A /* AlarmItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmItem.m; sourceTree = "<group>"; };
 		A5D8E40918E4CDF600CA66D4 /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddAlarmViewController.h; path = ../AddAlarmViewController.h; sourceTree = "<group>"; };
@@ -99,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59D208318E637E800053791 /* AVFoundation.framework in Frameworks */,
+				A59D208118E633ED00053791 /* MediaPlayer.framework in Frameworks */,
 				6360491518C90CB500C0F14B /* CoreGraphics.framework in Frameworks */,
 				6360491718C90CB500C0F14B /* UIKit.framework in Frameworks */,
 				6360491318C90CB500C0F14B /* Foundation.framework in Frameworks */,
@@ -140,6 +148,8 @@
 		6360491118C90CB500C0F14B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A59D208218E637E800053791 /* AVFoundation.framework */,
+				A59D208018E633ED00053791 /* MediaPlayer.framework */,
 				6360491218C90CB500C0F14B /* Foundation.framework */,
 				6360491418C90CB500C0F14B /* CoreGraphics.framework */,
 				6360491618C90CB500C0F14B /* UIKit.framework */,
@@ -168,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				6360491A18C90CB500C0F14B /* Project 1-Info.plist */,
+				A59D208418E63A8E00053791 /* audioTest.mp3 */,
 				6360491B18C90CB500C0F14B /* InfoPlist.strings */,
 				6360491E18C90CB500C0F14B /* main.m */,
 				6360492018C90CB500C0F14B /* Project 1-Prefix.pch */,
@@ -327,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6360492B18C90CB600C0F14B /* Images.xcassets in Resources */,
+				A59D208518E63A8E00053791 /* audioTest.mp3 in Resources */,
 				6360491D18C90CB500C0F14B /* InfoPlist.strings in Resources */,
 				6360492618C90CB600C0F14B /* Main.storyboard in Resources */,
 			);

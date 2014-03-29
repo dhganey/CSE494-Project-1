@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WeekItem.h"
 
 @interface AlarmItem : NSObject <NSCoding>
 
@@ -15,7 +14,9 @@
 @property NSNumber *hours;
 @property NSNumber *minutes;
 @property NSNumber *isOn;
-@property (nonatomic, strong) WeekItem *days;
+//@property (nonatomic, strong) WeekItem *days;
+@property (nonatomic, strong) NSMutableArray *weekdays;
 @property (nonatomic, strong) NSString *sound;
--(void) modifyDay:(NSString*)day setValue:(BOOL)newValue;
+-(void) modifyDay:(int)day setValue:(BOOL)newValue;
+
 @end

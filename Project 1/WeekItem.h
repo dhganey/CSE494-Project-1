@@ -5,7 +5,7 @@
 //  Created by alfheim on 3/27/14.
 //  Copyright (c) 2014 Ganey/Alfheim Industries. All rights reserved.
 //
-
+/* depricated
 #import <Foundation/Foundation.h>
 
 @interface WeekItem : NSObject <NSCoding>
@@ -17,3 +17,4 @@
 @property NSNumber *friday;
 @property NSNumber *saturday;
 @end
+*/

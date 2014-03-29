@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Ganey/Alfheim Industries. All rights reserved.
 //
 
-/*complete*/
+/*depricated
 
 #import "WeekItem.h"
 
@@ -47,3 +47,4 @@
 }
 
 @end
+*/

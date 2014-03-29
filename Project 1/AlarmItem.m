@@ -7,7 +7,6 @@
 //
 /*done*/
 #import "AlarmItem.h"
-#import "WeekItem.h"
 
 
 @implementation AlarmItem
@@ -19,10 +18,23 @@
     self.title = @"New Alarm";
     self.hours = 0;
     self.minutes = 0;
-    self.days = [[WeekItem alloc] init];
+    //self.days = [[WeekItem alloc] init];
+    self.weekdays = [self initializeWeekdays];
     self.sound = @"defaultSong";
     self.isOn = [NSNumber numberWithBool:YES];
     return self;
+}
+
+-(NSMutableArray*)initializeWeekdays{
+    NSNumber *sunday = [NSNumber numberWithBool:1];
+    NSNumber *monday = [NSNumber numberWithBool:1];
+    NSNumber *tuesday = [NSNumber numberWithBool:1];
+    NSNumber *wednesday = [NSNumber numberWithBool:1];
+    NSNumber *thursday = [NSNumber numberWithBool:1];
+    NSNumber *friday = [NSNumber numberWithBool:1];
+    NSNumber *saturday = [NSNumber numberWithBool:1];
+    NSMutableArray *weekdays = [NSMutableArray arrayWithObjects:sunday,monday,tuesday,wednesday,thursday,friday,saturday, nil];
+    return weekdays;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -32,7 +44,7 @@
         self.title = [aDecoder decodeObjectForKey:@"alarmTitle"];
         self.hours = [aDecoder decodeObjectForKey:@"alarmHours"];
         self.minutes = [aDecoder decodeObjectForKey:@"alarmMinutes"];
-        self.days = [aDecoder decodeObjectForKey:@"alarmDays"];
+       // self.days = [aDecoder decodeObjectForKey:@"alarmDays"];
         self.sound = [aDecoder decodeObjectForKey:@"alarmSound"];
     }
     return self;
@@ -43,25 +55,15 @@
     [aCoder encodeObject:self.title forKey:@"alarmTitle"];
     [aCoder encodeObject:self.hours forKey:@"alarmHours"];
     [aCoder encodeObject:self.minutes forKey:@"alarmMinutes"];
-    [aCoder encodeObject:self.days forKey:@"alarmDays"];
+   // [aCoder encodeObject:self.days forKey:@"alarmDays"];
     [aCoder encodeObject:self.sound forKey:@"alarmSound"];
 }
 
--(void) modifyDay:(NSString*)day setValue:(BOOL)newValue{
-    if( [day  isEqual: @"sunday"])
-        self.days.sunday = [NSNumber numberWithBool:newValue];
-    else if( [day  isEqual: @"monday"])
-        self.days.monday = [NSNumber numberWithBool:newValue];
-    else if( [day  isEqual: @"tuesday"])
-        self.days.tuesday= [NSNumber numberWithBool:newValue];
-    else if( [day  isEqual: @"wednesday"])
-        self.days.wednesday = [NSNumber numberWithBool:newValue];
-    else if( [day  isEqual: @"thursday"])
-        self.days.thursday = [NSNumber numberWithBool:newValue];
-    else if( [day  isEqual: @"friday"])
-        self.days.friday = [NSNumber numberWithBool:newValue];
-    else if( [day  isEqual: @"saturday"])
-        self.days.saturday = [NSNumber numberWithBool:newValue];
+-(void) modifyDay:(int)day setValue:(BOOL)newValue{
+    //confirm valid imputs
+    if(day < 7 && (newValue ==0 || newValue ==1)) {
+        [self.weekdays replaceObjectAtIndex:day withObject:[NSNumber numberWithBool:newValue]];
+    }
 }
 
 @end

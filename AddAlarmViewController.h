@@ -20,7 +20,10 @@
 
 @property (strong, nonatomic) IBOutlet UIDatePicker *timePicker;
 @property (strong, nonatomic) IBOutlet UITextField *titleField;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic ) UITextField * activeField;
 @property (nonatomic, weak) id <AddAlarmViewControllerDelegate> delegate;
+
 
 @end
 

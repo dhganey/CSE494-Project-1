@@ -10,6 +10,7 @@
 
 @implementation AddAlarmViewController
 
+/********* App methods ********/
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -23,7 +24,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    // listens to keyboard
+    [self registerForKeyboardNotifications];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,7 +37,76 @@
 
 /**** keyboard methods ****/
 //Should hide the keyboard when return pressed
-- (BOOL)textFieldShouldReturn:(UITextField *)depositText
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your app might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
+        [self.scrollView scrollRectToVisible:self.activeField.frame animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.activeField = nil;
+}
+// this scrolls the window to the input field
+/*
+-(void)keyboardWillShow:(NSNotification *) notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    CGSize keyboardSize = [[userInfo objectForKey: UIKeyboardFrameBeginUserInfoKey]CGRectValue].size;
+    CGRect viewFrame = self.scrollView.frame;
+    viewFrame.size.height -= keyboardSize.height;
+    self.scrollView.frame = viewFrame;
+}
+// this scrolls the window back to the bottom
+-(void)keyboardWillHide:(NSNotification *) notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    CGSize keyboardSize = [[userInfo objectForKey: UIKeyboardFrameBeginUserInfoKey]CGRectValue].size;
+    CGRect viewFrame = self.scrollView.frame;
+    viewFrame.size.height += keyboardSize.height;
+    self.scrollView.frame = viewFrame;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)field
 {
     // Any additional checks to ensure you have the correct textField here.
     [self.titleField endEditing:YES];
@@ -43,13 +114,12 @@
     return true;
 }
 
-//Hides the keyboard when touched (does not work in UITextArea)
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+-(void) tapped
 {
     [self.view endEditing:YES];
-    [super touchesBegan:touches withEvent:event];
-}
+}*/
 
+/******** send information to create item********/
 -(void) viewWillDisappear:(BOOL)animated
 {
     AlarmItem *item = [[AlarmItem alloc] init];

@@ -16,6 +16,7 @@
 #import "AddAlarmViewController.h"
 #import "AlarmItem.h"
 
+
 @interface AlarmViewController ()
 
 
@@ -29,6 +30,29 @@
     bool viewing; //determines whether to create a new node, or update the old one, when returning from Add controller
     int rowEdited; //redundant? don't delete
 }
+
+/*****sound ******/
+// sound effect from http://www.soundjay.com/beep-sounds-1.html
+-(IBAction)playAudio:(id)sender{
+    NSString *path = [[NSBundle mainBundle]
+                      pathForResource:@"audioTest" ofType:@"mp3"];
+    audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+    [audioPlayer play];
+}
+/* check alarm */
+-(IBAction)alarmCheck:(id)sender{
+    // get day of week
+    NSDate *now = [NSDate date];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    unsigned units = NSWeekdayCalendarUnit| NSHourCalendarUnit |NSMinuteCalendarUnit;
+    NSDateComponents *components = [cal components:units fromDate:now];
+    for (AlarmItem *alarm in alarms){
+        bool properDay = false;
+    }
+    
+    
+}
+
 /*********************Persistant storage ****************/
  -(NSString *) documentsDirectory
  {
@@ -83,7 +107,7 @@
      [archiver finishEncoding];
      [data writeToFile:[self dataFilePath] atomically:YES];
  }
- /******************rest of class **************/
+ /******************Generic app stuff **************/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -106,7 +130,7 @@
 }
 
 #pragma mark - Table view data source
-
+/************* Table view methods ***********/
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
