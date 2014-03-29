@@ -28,7 +28,7 @@
 
 -(NSString *) documentsDirectory
 {
-    return [@"~/Documents/Journal" stringByExpandingTildeInPath];
+    return [@"~/Documents" stringByExpandingTildeInPath];
 }
 
 - (NSString *)dataFilePath
@@ -70,8 +70,12 @@
         testItem.entryDate = testDate;
         
         [entries addObject:testItem];
-
+        
+        //[self saveJournalItems];
     }
+    
+    NSLog(@"loaded :%@", entries);
+    
 }
 
 //Saves the array of entries from local storage
@@ -89,16 +93,18 @@
     // encoding of the data
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
+    
+    NSLog(@"saved; %@", entries);
 }
 
 //Initializes the array and loads it from local storage
 - (void)viewDidLoad
 {
     //[super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
@@ -106,15 +112,22 @@
     
     if (!entries)
     {
-        entries = [[NSMutableArray alloc] init]; //TODO: update to work with Parse
+        entries = [[NSMutableArray alloc] init];
     }
-
+    NSLog(@"%@", entries);
     
     [self loadJournalItems];
     
     
-    NSLog(@"%@", entries);
-    
+     if ([entries count] == 0)
+     {
+     JournalItem* myItem = [[JournalItem alloc] init];
+     myItem.entryTitle = @"New Note";
+     myItem.entryContent = @"You can write a note here!";
+     myItem.entryDate = nil;
+     [entries addObject:myItem];
+     }
+     
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,24 +141,24 @@
 {
     viewing = false;
     /*
-    viewing = false;
-    
-    if (self.createdTitle != nil)
-    {
-        JournalItem* myItem = [[JournalItem alloc] init];
-        myItem.entryTitle = self.createdTitle;
-        myItem.entryContent = self.createdContent;
-        NSDate *newDate = [NSDate date];
-        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-        NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
-        newDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:newDate]];
-        myItem.entryDate = newDate;
-        
-        [entries addObject:newItem];
-    }
+     viewing = false;
+     
+     if (self.createdTitle != nil)
+     {
+     JournalItem* myItem = [[JournalItem alloc] init];
+     myItem.entryTitle = self.createdTitle;
+     myItem.entryContent = self.createdContent;
+     NSDate *newDate = [NSDate date];
+     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+     NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+     newDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:newDate]];
+     myItem.entryDate = newDate;
+     
+     [entries addObject:newItem];
+     }
      */
     
-    [self saveJournalItems];
+    //[self saveJournalItems];
 }
 
 #pragma mark - Table view data source
@@ -166,7 +179,7 @@
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:123];
     UILabel *dateLabel = (UILabel *)[cell viewWithTag:456];
-
+    
     JournalItem* item = [entries objectAtIndex:indexPath.row];
     titleLabel.text = item.entryTitle;
     
@@ -203,20 +216,20 @@
 
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 
 #pragma mark - Navigation
@@ -230,9 +243,9 @@
         // Pass the selected object to the new view controller.
         
         /* just removed
-        JournalEntryViewController* nextVC = segue.destinationViewController;
-        JournalItem* temp = [entries objectAtIndex:selectedRow];
-        nextVC.entryContent = temp.entryContent;
+         JournalEntryViewController* nextVC = segue.destinationViewController;
+         JournalItem* temp = [entries objectAtIndex:selectedRow];
+         nextVC.entryContent = temp.entryContent;
          */
         
         JournalAddEntryViewController *nextVC = segue.destinationViewController;
@@ -247,9 +260,9 @@
     else //moving to add
     {
         /*
-        JournalAddEntryViewController *nextVC = [[JournalAddEntryViewController alloc] initWithNibName:@"JournalAddEntryViewController" bundle:nil];
-        nextVC.delegate = self;
-        [[self navigationController] pushViewController:nextVC animated:YES];
+         JournalAddEntryViewController *nextVC = [[JournalAddEntryViewController alloc] initWithNibName:@"JournalAddEntryViewController" bundle:nil];
+         nextVC.delegate = self;
+         [[self navigationController] pushViewController:nextVC animated:YES];
          */
         JournalAddEntryViewController* nextVC = segue.destinationViewController;
         nextVC.entryTitle = @"New Post";
@@ -277,7 +290,7 @@
 
 -(void) addItemViewController:(JournalAddEntryViewController *)controller didFinishEnteringItem:(JournalItem *)item
 {
-
+    
     if (viewing) //simply update the content
     {
         JournalItem* temp = [entries objectAtIndex:rowEdited];
@@ -291,6 +304,8 @@
         [entries addObject:item];
     }
     [self.tableView reloadData];
+    
+    [self saveJournalItems];
 }
 
 @end

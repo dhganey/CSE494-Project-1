@@ -33,10 +33,42 @@
 {
     [super viewDidLoad];
     self.contentView.text = self.entryContent;
+    //[self.contentView sizeToFit];
     self.titleView.text = self.entryTitle;
     
-    
     self.navigationController.navigationBar.topItem.title = @"Save Entry";
+    
+    //add observers for notifications
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:self.view.window];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:self.view.window];
+    
+    self.contentView.textContainer.lineFragmentPadding = 0;
+    self.contentView.textContainerInset = UIEdgeInsetsZero;
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+
+//Removes observer from NSNotificationCenter
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)keyBoardWillShow:(NSNotification*) notification
+{
+    NSLog(@"Keyboard showing");
+    
+    CGRect theFrame = self.contentView.frame;
+    theFrame.size.height -= 220;
+    self.contentView.frame = theFrame;
+}
+
+-(void)keyBoardWillHide:(NSNotification *)notification
+{
+    NSLog(@"Keyboard hiding");
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,24 +111,24 @@
     myItem.entryDate = newDate;
     
     [self.delegate addItemViewController:self didFinishEnteringItem:myItem];
-
+    
 }
 
 //When view is going to disappear, creates a new JournalItem with content in view and passes it back to its delegate (JournalViewController)
 -(void) viewWillDisappear:(BOOL)animated
 {
     /*
-    JournalViewController* nextVC = segue.destinationViewController;
-    nextVC.createdContent = self.contentView.text;
-    nextVC.createdTitle = @"Newly Created Item";
-    */ 
+     JournalViewController* nextVC = segue.destinationViewController;
+     nextVC.createdContent = self.contentView.text;
+     nextVC.createdTitle = @"Newly Created Item";
+     */
     
     JournalItem* myItem = [[JournalItem alloc] init];
     NSString *content = @"";
     if (self.contentView.text != NULL)
     {
         content = self.contentView.text;
-
+        
     }
     NSString *title = @"";
     if ([self.titleView.text length] != 0)
@@ -116,7 +148,7 @@
     NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
     newDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:newDate]];
     myItem.entryDate = newDate;
-
+    
     [self.delegate addItemViewController:self didFinishEnteringItem:myItem];
     
 }

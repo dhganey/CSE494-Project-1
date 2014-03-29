@@ -12,7 +12,7 @@
 
 //#include "JournalItem.h"
 
-@interface JournalViewController : UITableViewController <JournalAddEntryViewControllerDelegate>
+@interface JournalViewController : UITableViewController <JournalAddEntryViewControllerDelegate, NSCoding>
 
 //@property NSString* createdContent;
 //@property NSString* createdTitle;
