@@ -111,24 +111,24 @@
     myItem.entryDate = newDate;
     
     [self.delegate addItemViewController:self didFinishEnteringItem:myItem];
-
+    
 }
 
 //When view is going to disappear, creates a new JournalItem with content in view and passes it back to its delegate (JournalViewController)
 -(void) viewWillDisappear:(BOOL)animated
 {
     /*
-    JournalViewController* nextVC = segue.destinationViewController;
-    nextVC.createdContent = self.contentView.text;
-    nextVC.createdTitle = @"Newly Created Item";
-    */ 
+     JournalViewController* nextVC = segue.destinationViewController;
+     nextVC.createdContent = self.contentView.text;
+     nextVC.createdTitle = @"Newly Created Item";
+     */
     
     JournalItem* myItem = [[JournalItem alloc] init];
     NSString *content = @"";
     if (self.contentView.text != NULL)
     {
         content = self.contentView.text;
-
+        
     }
     NSString *title = @"";
     if ([self.titleView.text length] != 0)
@@ -148,7 +148,7 @@
     NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
     newDate = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:newDate]];
     myItem.entryDate = newDate;
-
+    
     [self.delegate addItemViewController:self didFinishEnteringItem:myItem];
     
 }
