@@ -57,6 +57,7 @@
     // if not then we'll just make a new storage
     else
     {
+        /*
         NSString* testTitle = @"Test title 1";
         NSString* testContent = @"There once was a man from Peru, who dreamed he was eating his shoe. He woke with a fright in the middle of the night to find that his dream had come true!";
         NSDate *testDate = [NSDate date];
@@ -72,6 +73,14 @@
         [entries addObject:testItem];
         
         //[self saveJournalItems];
+        */
+        
+        JournalItem* testItem = [[JournalItem alloc] init];
+        testItem.entryContent = @"You can write notes here!";
+        testItem.entryTitle = @"Note title";
+        testItem.entryDate = [NSDate date];
+        [entries addObject:testItem];
+        [self saveJournalItems];
     }
     
     NSLog(@"loaded :%@", entries);
