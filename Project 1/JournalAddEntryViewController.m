@@ -33,10 +33,42 @@
 {
     [super viewDidLoad];
     self.contentView.text = self.entryContent;
+    //[self.contentView sizeToFit];
     self.titleView.text = self.entryTitle;
     
-    
     self.navigationController.navigationBar.topItem.title = @"Save Entry";
+    
+    //add observers for notifications
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:self.view.window];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:self.view.window];
+    
+    self.contentView.textContainer.lineFragmentPadding = 0;
+    self.contentView.textContainerInset = UIEdgeInsetsZero;
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+
+//Removes observer from NSNotificationCenter
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)keyBoardWillShow:(NSNotification*) notification
+{
+    NSLog(@"Keyboard showing");
+    
+    CGRect theFrame = self.contentView.frame;
+    theFrame.size.height -= 220;
+    self.contentView.frame = theFrame;
+}
+
+-(void)keyBoardWillHide:(NSNotification *)notification
+{
+    NSLog(@"Keyboard hiding");
 }
 
 - (void)didReceiveMemoryWarning

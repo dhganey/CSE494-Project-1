@@ -28,7 +28,7 @@
 
 -(NSString *) documentsDirectory
 {
-    return [@"~/Documents/Journal" stringByExpandingTildeInPath];
+    return [@"~/Documents" stringByExpandingTildeInPath];
 }
 
 - (NSString *)dataFilePath
@@ -71,7 +71,11 @@
         
         [entries addObject:testItem];
 
+        //[self saveJournalItems];
     }
+    
+    NSLog(@"loaded :%@", entries);
+
 }
 
 //Saves the array of entries from local storage
@@ -89,6 +93,8 @@
     // encoding of the data
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
+    
+    NSLog(@"saved; %@", entries);
 }
 
 //Initializes the array and loads it from local storage
@@ -106,15 +112,22 @@
     
     if (!entries)
     {
-        entries = [[NSMutableArray alloc] init]; //TODO: update to work with Parse
+        entries = [[NSMutableArray alloc] init];
     }
-
-    
-    [self loadJournalItems];
-    
-    
     NSLog(@"%@", entries);
     
+    [self loadJournalItems];
+
+    /*
+    if ([entries count] == 0)
+    {
+        JournalItem* myItem = [[JournalItem alloc] init];
+        myItem.entryTitle = @"New Note";
+        myItem.entryContent = @"You can write a note here!";
+        myItem.entryDate = nil;
+        [entries addObject:myItem];
+    }
+     */
 }
 
 - (void)didReceiveMemoryWarning
@@ -145,7 +158,7 @@
     }
      */
     
-    [self saveJournalItems];
+    //[self saveJournalItems];
 }
 
 #pragma mark - Table view data source
