@@ -33,7 +33,7 @@
 
 /*****sound ******/
 // sound effect from http://www.soundjay.com/beep-sounds-1.html
--(IBAction)playAudio:(id)sender{
+-(void)playAudio{
     NSString *path = [[NSBundle mainBundle]
                       pathForResource:@"audioTest" ofType:@"mp3"];
     audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
@@ -46,8 +46,14 @@
     NSCalendar *cal = [NSCalendar currentCalendar];
     unsigned units = NSWeekdayCalendarUnit| NSHourCalendarUnit |NSMinuteCalendarUnit;
     NSDateComponents *components = [cal components:units fromDate:now];
-    for (AlarmItem *alarm in alarms){
-        bool properDay = false;
+    int currentDay = [components weekday];
+    int currentHour = [components hour];
+    int currentMinute = [components minute];
+    for (int i=0; i < [alarms count]; i++){
+        AlarmItem *alarm = [alarms objectAtIndex:i];
+        if([[alarm.weekdays objectAtIndex:currentDay] boolValue] && [alarm.minutes intValue] == currentMinute && [alarm.hours intValue] == currentHour){
+            [self playAudio];
+        }
     }
     
     
