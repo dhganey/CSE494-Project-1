@@ -23,10 +23,105 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.titleField.delegate = self;
 	// Do any additional setup after loading the view.
     // listens to keyboard
     [self registerForKeyboardNotifications];
+    self.responseLabel.hidden = YES;
+    
+    // check and set preset values
+    if(self.presetTitle)
+        self.titleField.text = self.presetTitle;
+    if (self.presetDate)
+        self.timePicker.date = self.presetDate;
+    int BUTTON_BASE = 21;
+    if (self.days)
+    {
+        
+        for (int i = 0; i <[self.days count]; i++){
+            UIButton *day = (UIButton*)[self.scrollView viewWithTag:BUTTON_BASE+i];
+            day.selected = [(NSNumber *)[self.days objectAtIndex:i] boolValue];
+            if (day.selected)
+                day.backgroundColor = [UIColor greenColor];
+            else
+                day.backgroundColor = [UIColor redColor];
+        }
+    }
+    else {
+        for (int i = 0; i < 7; i++)
+        {
+            UIButton *day = (UIButton*)[self.scrollView viewWithTag:BUTTON_BASE+i];
+            day.selected = 1;
+            day.backgroundColor = [UIColor greenColor];
+        }
+            
+    }
 }
+
+/************ Lazy method of toggling days ********/
+- (IBAction)toggleSunday:(id)sender {
+    UIButton *sunday = (UIButton *) sender;
+    sunday.selected = !sunday.selected;
+    if (sunday.selected)
+        sunday.backgroundColor = [UIColor greenColor];
+    else
+        sunday.backgroundColor = [UIColor redColor];
+}
+
+- (IBAction)toggleMonday:(id)sender {
+    UIButton *monday = (UIButton *) sender;
+    monday.selected = !monday.selected;
+    if (monday.selected)
+        monday.backgroundColor = [UIColor greenColor];
+    else
+        monday.backgroundColor = [UIColor redColor];
+}
+
+- (IBAction)toggleTuesday:(id)sender {
+    UIButton *tuesday = (UIButton *) sender;
+    tuesday.selected = !tuesday.selected;
+    if (tuesday.selected)
+        tuesday.backgroundColor = [UIColor greenColor];
+    else
+        tuesday.backgroundColor = [UIColor redColor];
+}
+
+- (IBAction)toggleWednesday:(id)sender {
+    UIButton *wednesday = (UIButton *) sender;
+    wednesday.selected = !wednesday.selected;
+    if (wednesday.selected)
+        wednesday.backgroundColor = [UIColor greenColor];
+    else
+        wednesday.backgroundColor = [UIColor redColor];
+}
+
+- (IBAction)toggleThursday:(id)sender {
+    UIButton *thursday = (UIButton *) sender;
+    thursday.selected = !thursday.selected;
+    if (thursday.selected)
+        thursday.backgroundColor = [UIColor greenColor];
+    else
+        thursday.backgroundColor = [UIColor redColor];
+}
+
+- (IBAction)toggleFriday:(id)sender {
+    UIButton *friday = (UIButton *) sender;
+    friday.selected = !friday.selected;
+    if (friday.selected)
+        friday.backgroundColor = [UIColor greenColor];
+    else
+        friday.backgroundColor = [UIColor redColor];
+}
+
+- (IBAction)toggleSaturday:(id)sender {
+    UIButton *saturday = (UIButton *) sender;
+    saturday.selected = !saturday.selected;
+    if (saturday.selected)
+        saturday.backgroundColor = [UIColor greenColor];
+    else
+        saturday.backgroundColor = [UIColor redColor];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -47,9 +142,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillBeHidden:)
                                                  name:UIKeyboardWillHideNotification object:nil];
-    
 }
 
+#warning this method is not right
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
@@ -69,6 +164,12 @@
     }
 }
 
+//Hides the keyboard when touched (does not work in UITextArea)
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.scrollView endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
+}
 // Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
@@ -86,6 +187,28 @@
 {
     self.activeField = nil;
 }
+
+//Should hide the keyboard when return pressed
+- (BOOL)textFieldShouldReturn:(UITextField *)depositText
+{
+    // Any additional checks to ensure you have the correct textField here.
+    //[self.scrollView endEditing:YES];
+    [self.titleField resignFirstResponder];
+    return true;
+}
+
+// returns an nsmutablearray of the status of the seven day buttons
+-(NSMutableArray*)getDaysSelected{
+    int BUTTON_BASE = 21;
+    NSMutableArray *daysSelected = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 7; i++){
+        UIButton *day = (UIButton*)[self.scrollView viewWithTag:BUTTON_BASE+i];
+        NSNumber *isSelected = [NSNumber numberWithBool:day.selected];
+        [daysSelected addObject:isSelected];
+    }
+    return daysSelected;
+}
+
 // this scrolls the window to the input field
 /*
 -(void)keyboardWillShow:(NSNotification *) notification
@@ -113,23 +236,32 @@
     //[withdrawalText resignFirstResponder];
     return true;
 }
-
+*/
 -(void) tapped
 {
     [self.view endEditing:YES];
-}*/
+}
 
 /******** send information to create item********/
--(void) viewWillDisappear:(BOOL)animated
-{
-    AlarmItem *item = [[AlarmItem alloc] init];
-    item.title = self.titleField.text;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"<your date format goes here"];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:self.timePicker.date];
-    item.hours = [NSNumber numberWithInteger:[components hour]];
-    item.minutes = [NSNumber numberWithInteger:[components minute]];
-    [self.delegate addItemViewController:self didFinishEnteringItem:item];
+-(IBAction)createButtonClicked:(id)sender{
+    if( [self.titleField.text length] >0){
+        AlarmItem *item = [[AlarmItem alloc] init];
+        item.title = self.titleField.text;
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:self.timePicker.date];
+        item.hours = [NSNumber numberWithInteger:[components hour]];
+        item.minutes = [NSNumber numberWithInteger:[components minute]];
+        item.weekdays = [self getDaysSelected];
+        [self.delegate addItemViewController:self didFinishEnteringItem:item];
+        // goe
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        self.responseLabel.hidden = NO;
+    }
 }
+- (IBAction)backButtonClicked:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 @end

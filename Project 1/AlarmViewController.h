@@ -11,8 +11,5 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface AlarmViewController : UITableViewController <AddAlarmViewControllerDelegate>{
-    AVAudioPlayer *audioPlayer;
-}
--(IBAction)playAudio:(id)sender;
+@interface AlarmViewController : UITableViewController 
 @end

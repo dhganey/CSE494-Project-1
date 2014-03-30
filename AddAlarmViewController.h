@@ -16,13 +16,21 @@
 @end
 
 
-@interface AddAlarmViewController : UIViewController
+@interface AddAlarmViewController : UIViewController <UITextFieldDelegate>{
+}
 
 @property (strong, nonatomic) IBOutlet UIDatePicker *timePicker;
 @property (strong, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic ) UITextField * activeField;
 @property (nonatomic, weak) id <AddAlarmViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UILabel *responseLabel;
+
+@property NSDate *presetDate;
+@property NSString *presetTitle;
+@property NSMutableArray *presetWeekdays;
+
+@property NSMutableArray * days;
 
 
 @end

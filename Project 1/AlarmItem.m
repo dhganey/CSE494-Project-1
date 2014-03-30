@@ -37,33 +37,79 @@
     return weekdays;
 }
 
+// timer is generated after loading by superior method
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     if ((self = [super init]))
     {
         self.title = [aDecoder decodeObjectForKey:@"alarmTitle"];
         self.hours = [aDecoder decodeObjectForKey:@"alarmHours"];
+        self.weekdays = [aDecoder decodeObjectForKey:@"alarmWeekdays"];
         self.minutes = [aDecoder decodeObjectForKey:@"alarmMinutes"];
-       // self.days = [aDecoder decodeObjectForKey:@"alarmDays"];
         self.sound = [aDecoder decodeObjectForKey:@"alarmSound"];
+        self.isOn = [aDecoder decodeObjectForKey:@"alarmIsOn"];
     }
     return self;
 }
 
+// encodes things
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.title forKey:@"alarmTitle"];
     [aCoder encodeObject:self.hours forKey:@"alarmHours"];
     [aCoder encodeObject:self.minutes forKey:@"alarmMinutes"];
-   // [aCoder encodeObject:self.days forKey:@"alarmDays"];
+    [aCoder encodeObject:self.weekdays forKey:@"alarmWeekdays"];
     [aCoder encodeObject:self.sound forKey:@"alarmSound"];
+    [aCoder encodeObject:self.isOn forKey:@"alarmIsOn"];
 }
 
--(void) modifyDay:(int)day setValue:(BOOL)newValue{
-    //confirm valid imputs
-    if(day < 7 && (newValue ==0 || newValue ==1)) {
-        [self.weekdays replaceObjectAtIndex:day withObject:[NSNumber numberWithBool:newValue]];
+// adds a nstimer to the application for the set time
+-(void) setAlarm{
+    // if current alarm has timer, disable it and overwrite
+    if(self.timer){
+        [self.timer invalidate];
+    }
+    // todo fix;
+    NSDate *currentDate = [NSDate date];
+    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components= [cal components:NSIntegerMax fromDate:currentDate];
+    [components setHour:[self.hours integerValue]];
+    [components setMinute:[self.minutes integerValue]];
+    [components setSecond:0];
+    // create date of today with current alarm time
+    NSDate *fireDate = [cal dateFromComponents:components];
+    
+    // checks alarm every 24 hours- proper day and alarm on is checked in called method
+    self.timer = [[NSTimer alloc ]initWithFireDate:fireDate interval:86400 target:self selector:@selector(alarmCheck) userInfo:nil repeats:YES];
+    
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
+// checks to guarentee day, alarm is on, and proper time is met
+-(void) alarmCheck{
+    // get day of week
+    NSDate *now = [NSDate date];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    unsigned units = NSWeekdayCalendarUnit| NSHourCalendarUnit |NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *components = [cal components:units fromDate:now];
+    int currentDay = [components weekday]-1;
+    int currentHour = [components hour];
+    int currentMinute = [components minute];
+    int currentSecond = [components second];
+    if([[self.weekdays objectAtIndex:(currentDay)] boolValue] && self.isOn &&
+            [self.hours intValue] == currentHour && [self.minutes intValue] == currentMinute &&
+                currentSecond <10){
+        [self playAudio];
     }
 }
 
+/*****sound ******/
+// sound effect from http://www.soundjay.com/beep-sounds-1.html
+// plays the audio clip which is about 6 seconds long
+-(void)playAudio{
+    NSString *path = [[NSBundle mainBundle]
+                      pathForResource:@"Fire-alarm" ofType:@"mp3"];
+    self.audioPlayer2 = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+    [self.audioPlayer2 play];
+}
 @end

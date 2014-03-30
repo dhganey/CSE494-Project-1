@@ -31,11 +31,14 @@
 		63FCAE8A18DA2B8E00E3BC5A /* JournalItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8918DA2B8E00E3BC5A /* JournalItem.m */; };
 		63FCAE8D18DA319F00E3BC5A /* JournalEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8C18DA319F00E3BC5A /* JournalEntryViewController.m */; };
 		63FCAE9018DA31B000E3BC5A /* JournalAddEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */; };
-		A53FF06418E499CE00DB45E0 /* WeekItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A53FF06318E499CE00DB45E0 /* WeekItem.m */; };
 		A59D208118E633ED00053791 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D208018E633ED00053791 /* MediaPlayer.framework */; };
 		A59D208318E637E800053791 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D208218E637E800053791 /* AVFoundation.framework */; };
 		A59D208518E63A8E00053791 /* audioTest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A59D208418E63A8E00053791 /* audioTest.mp3 */; };
 		A5A2468018E39772000D203A /* AlarmItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A2467F18E39772000D203A /* AlarmItem.m */; };
+		A5D141F218E7D64E000B70B6 /* Fire-alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5D141F118E7D64E000B70B6 /* Fire-alarm.mp3 */; };
+		A5D141F618E7F878000B70B6 /* 76.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D141F318E7F877000B70B6 /* 76.png */; };
+		A5D141F718E7F878000B70B6 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D141F418E7F878000B70B6 /* 120.png */; };
+		A5D141F818E7F878000B70B6 /* 152.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D141F518E7F878000B70B6 /* 152.png */; };
 		A5D8E40B18E4CDF600CA66D4 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D8E40A18E4CDF600CA66D4 /* AddAlarmViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -89,13 +92,15 @@
 		63FCAE8C18DA319F00E3BC5A /* JournalEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalEntryViewController.m; sourceTree = "<group>"; };
 		63FCAE8E18DA31B000E3BC5A /* JournalAddEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JournalAddEntryViewController.h; sourceTree = "<group>"; };
 		63FCAE8F18DA31B000E3BC5A /* JournalAddEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalAddEntryViewController.m; sourceTree = "<group>"; };
-		A53FF06218E499CE00DB45E0 /* WeekItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekItem.h; sourceTree = "<group>"; };
-		A53FF06318E499CE00DB45E0 /* WeekItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekItem.m; sourceTree = "<group>"; };
 		A59D208018E633ED00053791 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		A59D208218E637E800053791 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A59D208418E63A8E00053791 /* audioTest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audioTest.mp3; sourceTree = "<group>"; };
 		A5A2467E18E39772000D203A /* AlarmItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmItem.h; sourceTree = "<group>"; };
 		A5A2467F18E39772000D203A /* AlarmItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmItem.m; sourceTree = "<group>"; };
+		A5D141F118E7D64E000B70B6 /* Fire-alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Fire-alarm.mp3"; sourceTree = "<group>"; };
+		A5D141F318E7F877000B70B6 /* 76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 76.png; sourceTree = "<group>"; };
+		A5D141F418E7F878000B70B6 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
+		A5D141F518E7F878000B70B6 /* 152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 152.png; sourceTree = "<group>"; };
 		A5D8E40918E4CDF600CA66D4 /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddAlarmViewController.h; path = ../AddAlarmViewController.h; sourceTree = "<group>"; };
 		A5D8E40A18E4CDF600CA66D4 /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAlarmViewController.m; path = ../AddAlarmViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,7 +183,11 @@
 			isa = PBXGroup;
 			children = (
 				6360491A18C90CB500C0F14B /* Project 1-Info.plist */,
+				A5D141F318E7F877000B70B6 /* 76.png */,
+				A5D141F418E7F878000B70B6 /* 120.png */,
+				A5D141F518E7F878000B70B6 /* 152.png */,
 				A59D208418E63A8E00053791 /* audioTest.mp3 */,
+				A5D141F118E7D64E000B70B6 /* Fire-alarm.mp3 */,
 				6360491B18C90CB500C0F14B /* InfoPlist.strings */,
 				6360491E18C90CB500C0F14B /* main.m */,
 				6360492018C90CB500C0F14B /* Project 1-Prefix.pch */,
@@ -211,8 +220,6 @@
 				63E7ADA318CA1C110086D496 /* AlarmViewController.m */,
 				A5A2467E18E39772000D203A /* AlarmItem.h */,
 				A5A2467F18E39772000D203A /* AlarmItem.m */,
-				A53FF06218E499CE00DB45E0 /* WeekItem.h */,
-				A53FF06318E499CE00DB45E0 /* WeekItem.m */,
 				A5D8E40918E4CDF600CA66D4 /* AddAlarmViewController.h */,
 				A5D8E40A18E4CDF600CA66D4 /* AddAlarmViewController.m */,
 			);
@@ -338,7 +345,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6360492B18C90CB600C0F14B /* Images.xcassets in Resources */,
+				A5D141F218E7D64E000B70B6 /* Fire-alarm.mp3 in Resources */,
+				A5D141F818E7F878000B70B6 /* 152.png in Resources */,
+				A5D141F618E7F878000B70B6 /* 76.png in Resources */,
 				A59D208518E63A8E00053791 /* audioTest.mp3 in Resources */,
+				A5D141F718E7F878000B70B6 /* 120.png in Resources */,
 				6360491D18C90CB500C0F14B /* InfoPlist.strings in Resources */,
 				6360492618C90CB600C0F14B /* Main.storyboard in Resources */,
 			);
@@ -359,7 +370,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A53FF06418E499CE00DB45E0 /* WeekItem.m in Sources */,
 				63E7ADA718CA1C220086D496 /* SleepViewController.m in Sources */,
 				63237E5318E352C90073161B /* SleepTableViewController.m in Sources */,
 				A5A2468018E39772000D203A /* AlarmItem.m in Sources */,

@@ -27,36 +27,8 @@
     NSMutableArray* alarms; //contains all entries in the table
     int selectedRow; //set when user clicks a row
     AlarmItem* newAlarm;
-    bool viewing; //determines whether to create a new node, or update the old one, when returning from Add controller
+    bool editAlarm; //determines whether to create a new node, or update the old one, when returning from Add controller
     int rowEdited; //redundant? don't delete
-}
-
-/*****sound ******/
-// sound effect from http://www.soundjay.com/beep-sounds-1.html
--(void)playAudio{
-    NSString *path = [[NSBundle mainBundle]
-                      pathForResource:@"audioTest" ofType:@"mp3"];
-    audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
-    [audioPlayer play];
-}
-/* check alarm */
--(IBAction)alarmCheck:(id)sender{
-    // get day of week
-    NSDate *now = [NSDate date];
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    unsigned units = NSWeekdayCalendarUnit| NSHourCalendarUnit |NSMinuteCalendarUnit;
-    NSDateComponents *components = [cal components:units fromDate:now];
-    int currentDay = [components weekday];
-    int currentHour = [components hour];
-    int currentMinute = [components minute];
-    for (int i=0; i < [alarms count]; i++){
-        AlarmItem *alarm = [alarms objectAtIndex:i];
-        if([[alarm.weekdays objectAtIndex:currentDay] boolValue] && [alarm.minutes intValue] == currentMinute && [alarm.hours intValue] == currentHour){
-            [self playAudio];
-        }
-    }
-    
-    
 }
 
 /*********************Persistant storage ****************/
@@ -68,14 +40,14 @@
  - (NSString *)dataFilePath
  {
      NSLog(@"%@",[self documentsDirectory]);
-     return [[self documentsDirectory] stringByAppendingPathComponent:@"Checklist.plist"];
+     return [[self documentsDirectory] stringByAppendingPathComponent:@"Alarms.plist"];
  }
  
  //Loads the array of entries from local storage
- -(void) loadJournalItems
+ -(void) loadAlarmItems
  {
      NSString *path = [self dataFilePath];
- 
+     NSLog(@"%@", [self dataFilePath]);
      //do we have anything in our documents directory?  If we have anything then load it up
      if ([[NSFileManager defaultManager] fileExistsAtPath:path])
      {
@@ -84,28 +56,33 @@
             NSData *data = [[NSData alloc] initWithContentsOfFile:path];
             // make an unarchiver, and point it to our data
             NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-            alarms = [unarchiver decodeObjectForKey:@"alarmItems"];
+            alarms = [unarchiver decodeObjectForKey:@"AlarmItems"];
             // we've finished choosing keys that we want, unpack them!
             [unarchiver finishDecoding];
      }
     // if not then we'll just make a new storage
      else
      {
-         newAlarm = [[AlarmItem alloc] init];
+         //newAlarm = [[AlarmItem alloc] init];
          alarms  = [[NSMutableArray alloc] init];
-         [alarms addObject:newAlarm];
+         //[alarms addObject:newAlarm];
+         [self saveAlarmItems];
+     }
+     // turns on the alarm timer events for each alarm. The checking of on and date happen when the alarm activates
+     for (int i=0; i < [alarms count]; i++){
+         [[alarms objectAtIndex:i] setAlarm];
      }
  }
  
  //Saves the array of entries from local storage
- -(void) saveJournalItems
+ -(void) saveAlarmItems
  {
      // create a generic data storage object
      NSMutableData *data = [[NSMutableData alloc] init];
      // tell the archiver to use the storage we jut allocated, the archiver will do the
      // encoding steps and then write the result into that data object
      NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-     [archiver encodeObject:alarms forKey:@"alarmItems"];
+     [archiver encodeObject:alarms forKey:@"AlarmItems"];
      // this is an important step to say that we are done adding items to encode
      // and we want the data to be encoded now
      // the archiver waits until it is finished so it is able to get the most efficient
@@ -114,18 +91,26 @@
      [data writeToFile:[self dataFilePath] atomically:YES];
  }
  /******************Generic app stuff **************/
+
+//resets edit value after canceling edit
+-(void)viewWillAppear:(BOOL)animated{
+    editAlarm = false;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    newAlarm = [[AlarmItem alloc] init];
-    alarms  = [[NSMutableArray alloc] init];
-    [alarms addObject:newAlarm];
+    if (!alarms)
+        alarms  = [[NSMutableArray alloc] init];
+    [self loadAlarmItems];
+    editAlarm = false;
+    // checks the alarm at the start of every minute
 }
 
 
@@ -165,34 +150,83 @@
     
     
     // alarm switch
-    UISwitch *alarmSwitch = (UISwitch *)[cell.contentView viewWithTag:100];
+    UISwitch *alarmSwitch = (UISwitch *)[cell.contentView viewWithTag:3];
     alarmSwitch.on = [cellAlarm.isOn boolValue];
     return cell;
 }
 
+
+
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+- (IBAction)toggleAlarm:(id)sender {
+    // get index of of button press- referenced http://stackoverflow.com/questions/7504421/getting-row-of-uitableview-cell-on-button-press/16270198#16270198 to get index of where a cell button is pressed
+    CGPoint switchPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:switchPosition];
+    AlarmItem *togggledAlarm = [alarms objectAtIndex:indexPath.row];
+    togggledAlarm.isOn = [NSNumber numberWithBool:((UISwitch *)sender).on];
+}
+
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [alarms removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    [self saveAlarmItems];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    editAlarm = true;
+    selectedRow = indexPath.row;
+    [self performSegueWithIdentifier:@"addAlarm" sender:self];
+}
+/******for adding alarms ******/
 #warning complete this
 -(void) addItemViewController:(AddAlarmViewController *)controller didFinishEnteringItem:(AlarmItem *)item
 {
-    /*if(viewing)
+    if(editAlarm)
     {
         AlarmItem *temp = [alarms objectAtIndex:rowEdited];
         temp.title = item.title;
         temp.hours = item.hours;
         temp.minutes = item.minutes;
-        temp.days = item.days;
+        temp.weekdays = item.weekdays;
         temp.sound = item.sound;
     }
     else // new content
-    {*/
-    [alarms addObject:item];
-    //}
+        [alarms addObject:item];
+    // activate alarm timer
+    [[alarms objectAtIndex:rowEdited] setAlarm];
     [self.tableView reloadData];
+    [self saveAlarmItems];
+    editAlarm = false;
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     AddAlarmViewController *nextVC = segue.destinationViewController;
     nextVC.delegate = self;
+    if(editAlarm){
+        AlarmItem * alarmToEdit = [alarms objectAtIndex:selectedRow];
+        nextVC.presetTitle = alarmToEdit.title;
+        NSDateComponents *components = [[NSDateComponents alloc] init];
+        [components setHour:[alarmToEdit.hours integerValue]];
+        [components setMinute:[alarmToEdit.minutes integerValue]];
+        NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        nextVC.presetDate = [cal dateFromComponents:components];
+        nextVC.days = alarmToEdit.weekdays;
+        rowEdited = selectedRow;
+    }
 }
+
+
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
