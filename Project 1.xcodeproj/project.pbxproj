@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		63237E5018E352420073161B /* SleepItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 63237E4F18E352420073161B /* SleepItem.m */; };
 		63237E5318E352C90073161B /* SleepTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63237E5218E352C90073161B /* SleepTableViewController.m */; };
+		6329E3B518F5D12400DD4CEE /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329E3B418F5D12400DD4CEE /* TabBarViewController.m */; };
+		6329E3B918F5D32500DD4CEE /* journalIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6329E3B818F5D32500DD4CEE /* journalIcon.png */; };
+		6329E3BB18F5D36100DD4CEE /* alarmIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6329E3BA18F5D36100DD4CEE /* alarmIcon.png */; };
+		6329E3BD18F5D40C00DD4CEE /* bell.png in Resources */ = {isa = PBXBuildFile; fileRef = 6329E3BC18F5D40C00DD4CEE /* bell.png */; };
+		6329E3BF18F5D41F00DD4CEE /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 6329E3BE18F5D41F00DD4CEE /* bookmark.png */; };
+		6329E3C118F5D48000DD4CEE /* contrast.png in Resources */ = {isa = PBXBuildFile; fileRef = 6329E3C018F5D48000DD4CEE /* contrast.png */; };
+		6329E3C418F5DCB500DD4CEE /* SleepStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329E3C318F5DCB500DD4CEE /* SleepStatsViewController.m */; };
 		6360491318C90CB500C0F14B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6360491218C90CB500C0F14B /* Foundation.framework */; };
 		6360491518C90CB500C0F14B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6360491418C90CB500C0F14B /* CoreGraphics.framework */; };
 		6360491718C90CB500C0F14B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6360491618C90CB500C0F14B /* UIKit.framework */; };
@@ -57,6 +64,15 @@
 		63237E4F18E352420073161B /* SleepItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepItem.m; sourceTree = "<group>"; };
 		63237E5118E352C90073161B /* SleepTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SleepTableViewController.h; sourceTree = "<group>"; };
 		63237E5218E352C90073161B /* SleepTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SleepTableViewController.m; sourceTree = "<group>"; };
+		6329E3B318F5D12400DD4CEE /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		6329E3B418F5D12400DD4CEE /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		6329E3B818F5D32500DD4CEE /* journalIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = journalIcon.png; sourceTree = "<group>"; };
+		6329E3BA18F5D36100DD4CEE /* alarmIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarmIcon.png; sourceTree = "<group>"; };
+		6329E3BC18F5D40C00DD4CEE /* bell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bell.png; sourceTree = "<group>"; };
+		6329E3BE18F5D41F00DD4CEE /* bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark.png; sourceTree = "<group>"; };
+		6329E3C018F5D48000DD4CEE /* contrast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contrast.png; sourceTree = "<group>"; };
+		6329E3C218F5DCB500DD4CEE /* SleepStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepStatsViewController.h; path = ../SleepStatsViewController.h; sourceTree = "<group>"; };
+		6329E3C318F5DCB500DD4CEE /* SleepStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepStatsViewController.m; path = ../SleepStatsViewController.m; sourceTree = "<group>"; };
 		6360490F18C90CB500C0F14B /* Project 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6360491218C90CB500C0F14B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6360491418C90CB500C0F14B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -172,6 +188,8 @@
 				A59918C818E3838400E9DBA0 /* Project */,
 				6360492A18C90CB600C0F14B /* Images.xcassets */,
 				6360492418C90CB600C0F14B /* Main.storyboard */,
+				6329E3B318F5D12400DD4CEE /* TabBarViewController.h */,
+				6329E3B418F5D12400DD4CEE /* TabBarViewController.m */,
 				63E7AD9C18CA1AC00086D496 /* MainViewController.h */,
 				63E7AD9D18CA1AC00086D496 /* MainViewController.m */,
 				6360491918C90CB500C0F14B /* Supporting Files */,
@@ -186,8 +204,13 @@
 				A5D141F318E7F877000B70B6 /* 76.png */,
 				A5D141F418E7F878000B70B6 /* 120.png */,
 				A5D141F518E7F878000B70B6 /* 152.png */,
+				6329E3B818F5D32500DD4CEE /* journalIcon.png */,
+				6329E3C018F5D48000DD4CEE /* contrast.png */,
+				6329E3BC18F5D40C00DD4CEE /* bell.png */,
+				6329E3BE18F5D41F00DD4CEE /* bookmark.png */,
 				A59D208418E63A8E00053791 /* audioTest.mp3 */,
 				A5D141F118E7D64E000B70B6 /* Fire-alarm.mp3 */,
+				6329E3BA18F5D36100DD4CEE /* alarmIcon.png */,
 				6360491B18C90CB500C0F14B /* InfoPlist.strings */,
 				6360491E18C90CB500C0F14B /* main.m */,
 				6360492018C90CB500C0F14B /* Project 1-Prefix.pch */,
@@ -259,6 +282,8 @@
 			children = (
 				63237E4E18E352420073161B /* SleepItem.h */,
 				63237E4F18E352420073161B /* SleepItem.m */,
+				6329E3C218F5DCB500DD4CEE /* SleepStatsViewController.h */,
+				6329E3C318F5DCB500DD4CEE /* SleepStatsViewController.m */,
 				63237E5118E352C90073161B /* SleepTableViewController.h */,
 				63237E5218E352C90073161B /* SleepTableViewController.m */,
 				63E7ADA518CA1C220086D496 /* SleepViewController.h */,
@@ -346,12 +371,17 @@
 			files = (
 				6360492B18C90CB600C0F14B /* Images.xcassets in Resources */,
 				A5D141F218E7D64E000B70B6 /* Fire-alarm.mp3 in Resources */,
+				6329E3BB18F5D36100DD4CEE /* alarmIcon.png in Resources */,
 				A5D141F818E7F878000B70B6 /* 152.png in Resources */,
 				A5D141F618E7F878000B70B6 /* 76.png in Resources */,
 				A59D208518E63A8E00053791 /* audioTest.mp3 in Resources */,
 				A5D141F718E7F878000B70B6 /* 120.png in Resources */,
 				6360491D18C90CB500C0F14B /* InfoPlist.strings in Resources */,
+				6329E3C118F5D48000DD4CEE /* contrast.png in Resources */,
 				6360492618C90CB600C0F14B /* Main.storyboard in Resources */,
+				6329E3BF18F5D41F00DD4CEE /* bookmark.png in Resources */,
+				6329E3B918F5D32500DD4CEE /* journalIcon.png in Resources */,
+				6329E3BD18F5D40C00DD4CEE /* bell.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,9 +409,11 @@
 				63FCAE8A18DA2B8E00E3BC5A /* JournalItem.m in Sources */,
 				A5D8E40B18E4CDF600CA66D4 /* AddAlarmViewController.m in Sources */,
 				6360492318C90CB500C0F14B /* ProjectAppDelegate.m in Sources */,
+				6329E3C418F5DCB500DD4CEE /* SleepStatsViewController.m in Sources */,
 				6360492918C90CB600C0F14B /* ProjectViewController.m in Sources */,
 				63E7AD9B18CA19CD0086D496 /* ProjectUser.m in Sources */,
 				63E7ADA418CA1C110086D496 /* AlarmViewController.m in Sources */,
+				6329E3B518F5D12400DD4CEE /* TabBarViewController.m in Sources */,
 				63FCAE8D18DA319F00E3BC5A /* JournalEntryViewController.m in Sources */,
 				63E7AD9E18CA1AC00086D496 /* MainViewController.m in Sources */,
 				6360491F18C90CB500C0F14B /* main.m in Sources */,

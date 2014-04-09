@@ -24,6 +24,8 @@
 {
     [super viewDidLoad];
     self.titleField.delegate = self;
+    
+    
 	// Do any additional setup after loading the view.
     // listens to keyboard
     [self registerForKeyboardNotifications];

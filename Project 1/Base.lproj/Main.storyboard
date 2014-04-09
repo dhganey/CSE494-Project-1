@@ -1,60 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1Jz-xw-B6F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CO4-eF-q1O">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Project View Controller - Welcome-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ProjectViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to your personal assistant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ALg-FN-opT">
-                                <rect key="frame" x="23" y="115" width="274" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gaI-bO-InC">
-                                <rect key="frame" x="70" y="172" width="181" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" id="jbP-Q2-mb5">
-                                <rect key="frame" x="23" y="225" width="157" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rrM-Ja-fsP">
-                                <rect key="frame" x="264" y="225" width="33" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="q00-l6-daZ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Welcome" id="U77-eh-Oap"/>
-                    <connections>
-                        <outlet property="nameField" destination="jbP-Q2-mb5" id="llI-bn-pYw"/>
-                        <outlet property="welcomeLabel" destination="ALg-FN-opT" id="Rui-f7-jql"/>
-                        <segue destination="O8C-xT-bhP" kind="modal" identifier="startSegue" id="bXQ-eC-wcg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1350" y="296"/>
-        </scene>
         <!--Alarm View Controller - Alarms-->
         <scene sceneID="akj-wW-JhW">
             <objects>
@@ -113,7 +62,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10e-QB-Let" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2682" y="-332"/>
+            <point key="canvasLocation" x="3208" y="-332"/>
         </scene>
         <!--Add Alarm View Controller - Create Alarm-->
         <scene sceneID="sYj-Wh-J0C">
@@ -296,73 +245,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6QL-Ns-KJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3145" y="-672"/>
-        </scene>
-        <!--Main View Controller - Main Page-->
-        <scene sceneID="cGE-VX-fF1">
-            <objects>
-                <viewController id="u8M-2E-72c" customClass="MainViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="phC-pq-eyU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What would you like to do?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EVt-OA-TwN">
-                                <rect key="frame" x="0.0" y="104" width="320" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S3y-AM-pmx">
-                                <rect key="frame" x="120" y="418" width="80" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go to sleep">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sleepPressed:" destination="u8M-2E-72c" eventType="touchUpInside" id="1Sh-BS-MVX"/>
-                                    <segue destination="z7c-cS-KIe" kind="push" identifier="sleepSegue" id="uUO-HJ-liu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Byj-yt-pfQ">
-                                <rect key="frame" x="127" y="175" width="66" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Set alarm">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="alarmPressed:" destination="u8M-2E-72c" eventType="touchUpInside" id="64R-Tq-jgv"/>
-                                    <segue destination="jOF-0X-rQF" kind="push" identifier="alarmSegue" id="3hf-uc-fBA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ats-Wj-Ekb">
-                                <rect key="frame" x="135" y="294" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Journal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="journalPressed:" destination="u8M-2E-72c" eventType="touchUpInside" id="Dan-lX-MmW"/>
-                                    <segue destination="4TT-oc-P90" kind="push" identifier="journalSegue" id="YJ3-1n-iQj"/>
-                                </connections>
-                            </button>
-                            <navigationBar contentMode="scaleToFill" id="pgV-k6-Ee2">
-                                <rect key="frame" x="0.0" y="17" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Main Page" id="EsT-7p-7FX"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Main Page" id="YmB-Kp-Muv"/>
-                    <connections>
-                        <outlet property="mainText" destination="EVt-OA-TwN" id="pmb-yo-0Gh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mdb-Dc-z8K" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2163" y="296"/>
+            <point key="canvasLocation" x="3791" y="-674"/>
         </scene>
         <!--Sleep View Controller - Sleep Timer-->
         <scene sceneID="bxg-Eu-zYj">
@@ -412,7 +295,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="khg-XS-S8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2682" y="919"/>
+            <point key="canvasLocation" x="3208" y="919"/>
         </scene>
         <!--Sleep Table View Controller - Sleep History-->
         <scene sceneID="aEO-fC-rnX">
@@ -453,11 +336,55 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="30c-AH-4Tz" id="W5H-78-SOP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sleep History" id="gfX-hI-1Ht"/>
+                    <navigationItem key="navigationItem" title="Sleep History" id="gfX-hI-1Ht">
+                        <barButtonItem key="rightBarButtonItem" title="Stats" id="2tf-W3-jA2">
+                            <connections>
+                                <action selector="statsPressed:" destination="30c-AH-4Tz" id="t1w-qf-FMN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="A0M-C4-eCX" kind="push" identifier="sleepStatsSegue" id="KQo-pA-htd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1KW-qt-Pez" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3131" y="1291"/>
+            <point key="canvasLocation" x="3785" y="1144"/>
+        </scene>
+        <!--View Controller - Sleep Statistics-->
+        <scene sceneID="WkB-P9-Dtm">
+            <objects>
+                <viewController id="A0M-C4-eCX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dZf-gi-NV2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sleep Statistics" id="aOO-al-SEf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RZN-yU-pg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4181" y="1144"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="aEy-7x-dKv">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="CO4-eF-q1O" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="0cN-bv-ffI">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="575-WD-0aG" kind="relationship" relationship="viewControllers" id="PIh-BO-iU1"/>
+                        <segue destination="Nyx-jZ-4fb" kind="relationship" relationship="viewControllers" id="j2u-Em-AwL"/>
+                        <segue destination="ys5-fK-EdR" kind="relationship" relationship="viewControllers" id="mHD-oj-S4z"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzk-2e-XwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2079" y="284"/>
         </scene>
         <!--Journal View Controller - JournalViewController-->
         <scene sceneID="rz9-tT-IY8">
@@ -510,7 +437,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIM-7p-za8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2682" y="299"/>
+            <point key="canvasLocation" x="3208" y="299"/>
         </scene>
         <!--Journal Add Entry View Controller-->
         <scene sceneID="32A-86-rMi">
@@ -538,6 +465,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bcy-Yo-QSl"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="contentView" destination="2b3-5T-vBO" id="FWA-Hu-Vj1"/>
@@ -546,7 +474,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVi-hI-zHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3145" y="-73"/>
+            <point key="canvasLocation" x="3791" y="-61"/>
         </scene>
         <!--Journal Entry View Controller - View Entry-->
         <scene sceneID="K5F-fD-TlI">
@@ -574,45 +502,71 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbK-Y8-rx5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3145" y="625"/>
+            <point key="canvasLocation" x="3785" y="521"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="lHP-by-OJr">
+        <!--Navigation Controller - Alarm-->
+        <scene sceneID="1FT-no-bCM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Jz-xw-B6F" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="575-WD-0aG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Alarm" image="bell.png" id="42l-9u-mky"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ir8-Qf-PPh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hvi-Tw-3D6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="VDf-Ua-qYt"/>
+                        <segue destination="jOF-0X-rQF" kind="relationship" relationship="rootViewController" id="PzN-AT-NUY"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bkT-7u-cDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5D1-pR-R5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="299"/>
+            <point key="canvasLocation" x="2682" y="-332"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="elz-Np-C0r">
+        <!--Navigation Controller - Journal-->
+        <scene sceneID="G5Q-gz-bOL">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O8C-xT-bhP" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nyx-jZ-4fb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Journal" image="bookmark.png" id="BxG-Om-Ker"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wuL-4X-dCX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="45a-ir-k8A">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="u8M-2E-72c" kind="relationship" relationship="rootViewController" id="jd1-jZ-hdM"/>
+                        <segue destination="4TT-oc-P90" kind="relationship" relationship="rootViewController" id="ZKG-4h-e5H"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5nU-IE-uFP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AyA-Cm-0Zl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="296"/>
+            <point key="canvasLocation" x="2682" y="299"/>
+        </scene>
+        <!--Navigation Controller - Sleep-->
+        <scene sceneID="9EF-qC-u9n">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ys5-fK-EdR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Sleep" image="contrast.png" id="0HI-th-sMb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Cf-AX-Wdc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="z7c-cS-KIe" kind="relationship" relationship="rootViewController" id="fmv-Ln-yuY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PGY-Uh-xih" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2682" y="919"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bell.png" width="30" height="30"/>
+        <image name="bookmark.png" width="30" height="30"/>
+        <image name="contrast.png" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
