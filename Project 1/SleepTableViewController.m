@@ -142,4 +142,8 @@
 }
 */
 
+- (IBAction)statsPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"sleepStatsSegue" sender:self];
+}
 @end
