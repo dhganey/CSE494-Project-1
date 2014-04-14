@@ -116,17 +116,18 @@
     
     NSLog(@"%@", entries);
 
+    [self saveSleepItems];
 }
 
 -(NSString *) documentsDirectory
 {
-    return [@"~/Documents/Sleep" stringByExpandingTildeInPath];
+    return [@"~/Documents" stringByExpandingTildeInPath];
 }
 
 - (NSString *)dataFilePath
 {
     NSLog(@"%@",[self documentsDirectory]);
-    return [[self documentsDirectory] stringByAppendingPathComponent:@"Checklist.plist"];
+    return [[self documentsDirectory] stringByAppendingPathComponent:@"SleepEntries.plist"];
 }
 
 
