@@ -8,8 +8,6 @@
 
 #import "SleepTableViewController.h"
 
-#include "SleepItem.h"
-
 #define NUM_SECTIONS 1
 
 @interface SleepTableViewController ()
@@ -145,5 +143,11 @@
 - (IBAction)statsPressed:(id)sender
 {
     [self performSegueWithIdentifier:@"sleepStatsSegue" sender:self];
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SleepStatsViewController* nextVC = segue.destinationViewController;
+    nextVC.entries = self.entries; //pass the entries to the next VC
 }
 @end

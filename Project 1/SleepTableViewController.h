@@ -6,7 +6,12 @@
 //  Copyright (c) 2014 Ganey/Alfheim Industries. All rights reserved.
 //
 
+#pragma once
+
 #import <UIKit/UIKit.h>
+
+#include "SleepItem.h"
+#include "SleepStatsViewController.h"
 
 @interface SleepTableViewController : UITableViewController
 

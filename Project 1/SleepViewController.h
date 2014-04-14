@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Ganey/Alfheim Industries. All rights reserved.
 //
 
+#pragma once
+
 #import <UIKit/UIKit.h>
 
 #include "SleepTableViewController.h"
