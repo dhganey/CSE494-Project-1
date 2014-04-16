@@ -18,6 +18,7 @@
     NSMutableArray *entries;
     NSDate *currentEntry;
     NSString* currentString;
+    double currentInterval;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -98,14 +99,17 @@
     currentEntry = timerDate;
     self.sleepLabel.text = timeString;
     currentString = timeString;
+    
+    currentInterval = timeInterval;
 }
 
 -(void) stopTimer
 {
+    SleepItem *newItem = [[SleepItem alloc] init];
+    newItem.secondsSlept = currentInterval;
     [self.sleepTimer invalidate];
     self.sleepTimer = nil;
     [self updateTimer];
-    SleepItem *newItem = [[SleepItem alloc] init];
     newItem.timeSlept = currentString;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM-dd-yy"];

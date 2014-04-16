@@ -9,8 +9,11 @@
 #pragma once
 
 #import <UIKit/UIKit.h>
+#import "CorePlot-CocoaTouch.h"
 
-@interface SleepStatsViewController : UIViewController
+#include "SleepItem.h"
+
+@interface SleepStatsViewController : UIViewController <CPTPlotDataSource>
 
 @property NSMutableArray *entries;
 

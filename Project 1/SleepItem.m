@@ -16,6 +16,7 @@
     {
         self.dateSlept = [aDecoder decodeObjectForKey:@"dateSlept"];
         self.timeSlept = [aDecoder decodeObjectForKey:@"timeSlept"];
+        self.secondsSlept = [aDecoder decodeDoubleForKey:@"secondsSlept"];
     }
     return self;
 }
@@ -24,6 +25,7 @@
 {
     [aCoder encodeObject:self.dateSlept forKey:@"dateSlept"];
     [aCoder encodeObject:self.timeSlept forKey:@"timeSlept"];
+    [aCoder encodeDouble:self.secondsSlept forKey:@"secondsSlept"];
 }
 
 @end

@@ -81,7 +81,8 @@
     
     SleepItem *temp = [self.entries objectAtIndex:indexPath.row];
     NSString *dateSlept = temp.dateSlept;
-    NSString *timeSlept = temp.timeSlept;
+    //NSString *timeSlept = temp.timeSlept;
+    NSString *timeSlept = [NSString stringWithFormat:@"%f", temp.secondsSlept];
     
     dateLabel.text = dateSlept;
     sleptLabel.text = timeSlept;
