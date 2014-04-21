@@ -33,22 +33,42 @@
     
     //add hostview
     CPTGraphHostingView *hostView = [[CPTGraphHostingView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:hostView];
+    //[self.view addSubview:hostView];
     
     //create graph object and add to hostview
     CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:hostView.bounds];
     hostView.hostedGraph = graph;
+    
+   
+    //new stuff for formatting
+    hostView.allowPinchScaling = YES;
+    graph.paddingBottom = 30.0f;
+    graph.paddingLeft = 30.0f;
+    graph.paddingRight = -5.0f;
+    graph.paddingTop = -1.0f;
+    [graph applyTheme:[CPTTheme themeNamed:kCPTSlateTheme]];
+    
+    NSString *title = @"Time Asleep";
+    CPTMutableTextStyle *titleStyle = [CPTMutableTextStyle textStyle];
+    titleStyle.fontName = @"Helvetica Bold";
+    titleStyle.fontSize = 16.0f;
+    graph.title = title;
+    
     
     //get default plotspace
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
     
     //calculate ranges
     float xMin, xMax, yMin, yMax;
-    xMax = [self.entries count] + ((.25)*[self.entries count]); //add 25%
-    xMin = 0 - ((.2)*[self.entries count]);
+    //xMax = [self.entries count] + ((.25)*[self.entries count]); //add 25%
+    //xMin = 0 - ((.2)*[self.entries count]);
+    xMin = 0;
+    xMax = [self.entries count];
     
-    yMax = [self maxSleepEntry] + ((.25)*[self maxSleepEntry]);
-    yMin = 0 - ((.3)*[self minSleepEntry]);
+    //yMax = [self maxSleepEntry] + ((.25)*[self maxSleepEntry]);
+    //yMin = 0 - ((.3)*[self minSleepEntry]);
+    yMin = 0;
+    yMax = [self maxSleepEntry];
     
     //set ranges
     [plotSpace setXRange:[CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(xMin) length:CPTDecimalFromFloat(xMax)]];
@@ -60,7 +80,10 @@
     plot.dataSource = self; //this uses protocol in .h file
     
     [graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
-    [graph.defaultPlotSpace scaleToFitPlots:[graph allPlots]];
+    //[graph.defaultPlotSpace scaleToFitPlots:[graph allPlots]];
+    
+    [self.view addSubview:hostView];
+
 }
 
 -(float) maxSleepEntry
