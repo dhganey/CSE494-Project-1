@@ -6,11 +6,14 @@
 //  Copyright (c) 2014 Ganey/Alfheim Industries. All rights reserved.
 //
 
+#pragma once
+
 #import <Foundation/Foundation.h>
 
 @interface SleepItem : NSObject <NSCoding>
 
 @property NSString *timeSlept;
 @property NSString *dateSlept;
+@property double secondsSlept;
 
 @end

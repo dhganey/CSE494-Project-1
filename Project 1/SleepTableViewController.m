@@ -8,8 +8,6 @@
 
 #import "SleepTableViewController.h"
 
-#include "SleepItem.h"
-
 #define NUM_SECTIONS 1
 
 @interface SleepTableViewController ()
@@ -83,7 +81,8 @@
     
     SleepItem *temp = [self.entries objectAtIndex:indexPath.row];
     NSString *dateSlept = temp.dateSlept;
-    NSString *timeSlept = temp.timeSlept;
+    //NSString *timeSlept = temp.timeSlept;
+    NSString *timeSlept = [NSString stringWithFormat:@"%f", temp.secondsSlept];
     
     dateLabel.text = dateSlept;
     sleptLabel.text = timeSlept;
@@ -142,4 +141,14 @@
 }
 */
 
+- (IBAction)statsPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"sleepStatsSegue" sender:self];
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SleepStatsViewController* nextVC = segue.destinationViewController;
+    nextVC.entries = self.entries; //pass the entries to the next VC
+}
 @end
