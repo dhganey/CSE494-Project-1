@@ -32,8 +32,17 @@
     
     //dispatch_queue_t graphQueue = dispatch_queue_create("graph view create", NULL);
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSMutableArray *reversed = [[[self.entries reverseObjectEnumerator] allObjects] mutableCopy];
-        self.entries = reversed;
+        NSMutableArray *reversed = [[[self.entries reverseObjectEnumerator] allObjects] mutableCopy]; //reverse entries to show in chronologial order
+        if ([reversed count] > 10) //if we have a lot of entries
+        {
+            NSArray *temp = [reversed subarrayWithRange:NSMakeRange(0, 10)]; //grab the most recent 10
+            self.entries = [NSMutableArray arrayWithArray:temp];
+        }
+        else
+        {
+            self.entries = reversed;
+        }
+       
         
         //hack to force auto-layout
         CPTGraphHostingView *hostView = [[CPTGraphHostingView alloc] initWithFrame:self.NewGraphingView.frame];
@@ -47,8 +56,8 @@
         //new stuff for formatting
         hostView.allowPinchScaling = YES;
         
-        graph.paddingBottom = 10.0f; //30.0f;
-        graph.paddingLeft = 10.0f; //30.0f;
+        graph.paddingBottom = 0; //30.0f;
+        graph.paddingLeft = 0; //30.0f;
         graph.paddingRight = 0; //-5.0f;
         graph.paddingTop = 0; //-1.0f;
          
@@ -112,7 +121,7 @@
         
         //line color stuff
         CPTMutableLineStyle *lineStyle = [[CPTMutableLineStyle alloc] init];
-        lineStyle.lineColor = [CPTColor cyanColor];
+        lineStyle.lineColor = [CPTColor blueColor];
         lineStyle.lineWidth = 2.0f;
         plot.dataLineStyle = lineStyle;
         
