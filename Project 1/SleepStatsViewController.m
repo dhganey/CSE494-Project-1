@@ -11,6 +11,8 @@
 
 @interface SleepStatsViewController ()
 
+@property (strong, nonatomic) IBOutlet UIView *NewGraphingView;
+
 @end
 
 @implementation SleepStatsViewController
@@ -24,38 +26,61 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     
     //dispatch_queue_t graphQueue = dispatch_queue_create("graph view create", NULL);
     dispatch_async(dispatch_get_main_queue(), ^{
         NSMutableArray *reversed = [[[self.entries reverseObjectEnumerator] allObjects] mutableCopy];
         self.entries = reversed;
         
-        //add hostview
-        CPTGraphHostingView *hostView = [[CPTGraphHostingView alloc] initWithFrame:self.view.frame];
-        //[self.view addSubview:hostView];
+        //hack to force auto-layout
+        CPTGraphHostingView *hostView = [[CPTGraphHostingView alloc] initWithFrame:self.NewGraphingView.frame];
         
         //create graph object and add to hostview
-        CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:hostView.bounds];
+        //CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:hostView.bounds];
+        CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:CGRectMake(0, 0, 100, 100)]; //part of new hack
         hostView.hostedGraph = graph;
         
         
         //new stuff for formatting
         hostView.allowPinchScaling = YES;
-        graph.paddingBottom = 30.0f;
-        graph.paddingLeft = 30.0f;
-        graph.paddingRight = -5.0f;
-        graph.paddingTop = -1.0f;
-        [graph applyTheme:[CPTTheme themeNamed:kCPTSlateTheme]];
         
-        NSString *title = @"Time Asleep";
+        graph.paddingBottom = 10.0f; //30.0f;
+        graph.paddingLeft = 10.0f; //30.0f;
+        graph.paddingRight = 0; //-5.0f;
+        graph.paddingTop = 0; //-1.0f;
+         
+        //[graph applyTheme:[CPTTheme themeNamed:kCPTSlateTheme]];
+        [graph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
+        
+        //graph title stuff
+        NSString *title = @"Hours Asleep";
         CPTMutableTextStyle *titleStyle = [CPTMutableTextStyle textStyle];
         titleStyle.fontName = @"Helvetica Bold";
-        titleStyle.fontSize = 16.0f;
+        titleStyle.fontSize = 20.0f;
+        graph.titleTextStyle = titleStyle;
         graph.title = title;
         
+        /* //axis labels
+        
+        CPTXYAxisSet *axisSet = [[CPTXYAxisSet alloc] init];
+        CPTXYAxis *xAxis = [[CPTXYAxis alloc] init];
+        CPTXYAxis *yAxis = [[CPTXYAxis alloc] init];
+
+        CPTMutableTextStyle *labelStyle = [CPTMutableTextStyle textStyle];
+        labelStyle.fontName = @"Helvetica Bold";
+        labelStyle.fontSize = 10.0f;
+        CPTAxisLabel *xLabel = [[CPTAxisLabel alloc] initWithText:@"Sleep Cycle" textStyle:labelStyle];
+        CPTAxisLabel *yLabel = [[CPTAxisLabel alloc] initWithText:@"Hours Slept" textStyle:labelStyle];
+        xAxis.axisLabels = [[NSSet alloc] initWithObjects:xLabel, nil];
+        yAxis.axisLabels = [[NSSet alloc] initWithObjects:yLabel, nil];
+        
+        NSArray *axes = [[NSArray alloc] initWithObjects:xAxis, yAxis, nil];
+        axisSet.axes = axes;
+        graph.axisSet = axisSet;
+        */
         
         //get default plotspace
         CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
@@ -69,17 +94,27 @@
         
         //yMax = [self maxSleepEntry] + ((.25)*[self maxSleepEntry]);
         //yMin = 0 - ((.3)*[self minSleepEntry]);
+#define SCALAR_TO_NOT_HIDE_TITLE 1.2
+        
         yMin = 0;
-        yMax = [self maxSleepEntry];
+        //yMax = [self maxSleepEntry];
+        yMax = [self maxSleepEntry] * SCALAR_TO_NOT_HIDE_TITLE;
         
         //set ranges
         [plotSpace setXRange:[CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(xMin) length:CPTDecimalFromFloat(xMax)]];
         [plotSpace setYRange:[CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(yMin) length:CPTDecimalFromFloat(yMax)]];
         
         //create the plot
-        CPTScatterPlot *plot = [[CPTScatterPlot alloc] initWithFrame:self.view.frame];
+        //CPTScatterPlot *plot = [[CPTScatterPlot alloc] initWithFrame:self.view.frame];
+        CPTScatterPlot *plot = [[CPTScatterPlot alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
         
         plot.dataSource = self; //this uses protocol in .h file
+        
+        //line color stuff
+        CPTMutableLineStyle *lineStyle = [[CPTMutableLineStyle alloc] init];
+        lineStyle.lineColor = [CPTColor cyanColor];
+        lineStyle.lineWidth = 2.0f;
+        plot.dataLineStyle = lineStyle;
         
         [graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
         //[graph.defaultPlotSpace scaleToFitPlots:[graph allPlots]];

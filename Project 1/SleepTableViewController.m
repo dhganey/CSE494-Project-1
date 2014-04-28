@@ -82,7 +82,7 @@
     SleepItem *temp = [self.entries objectAtIndex:indexPath.row];
     NSString *dateSlept = temp.dateSlept;
     //NSString *timeSlept = temp.timeSlept;
-    NSString *timeSlept = [NSString stringWithFormat:@"%f", temp.secondsSlept];
+    NSString *timeSlept = [NSString stringWithFormat:@"%f", (temp.secondsSlept / 60)]; //divide by 60 to show hours
     
     dateLabel.text = dateSlept;
     sleptLabel.text = timeSlept;
