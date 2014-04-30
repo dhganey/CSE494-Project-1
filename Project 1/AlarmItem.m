@@ -96,10 +96,37 @@
     int currentHour = [components hour];
     int currentMinute = [components minute];
     int currentSecond = [components second];
+    
+    // check to see if alarm should go off
     if([[self.weekdays objectAtIndex:(currentDay)] boolValue] && self.isOn &&
             [self.hours intValue] == currentHour && [self.minutes intValue] == currentMinute &&
                 currentSecond <10){
         [self playAudio];
+        //[self alarmAlert];
+        //alarm notification
+        
+    }
+}
+
+-(void) alarmAlert{
+    UIAlertView *alarm = [[UIAlertView alloc] initWithTitle:self.title message:self.title delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:@"snooze", nil];
+    [alarm setTag:100];
+    [alarm show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if ([alertView tag] == 100) { //alarm tag
+        if (buttonIndex == 0) {     // dismiss.
+            [self.audioPlayer2 stop];
+        }
+        if (buttonIndex == 1){ // snooze
+            [self.audioPlayer2 stop];
+            
+            // creates new snooze alarm that will go directly to playing audio
+            NSDate *snoozeTime = [NSDate dateWithTimeIntervalSinceNow:60];
+            NSTimer *alarm =[[NSTimer alloc ]initWithFireDate:snoozeTime interval:86400 target:self selector:@selector(playAudio) userInfo:nil repeats:NO];
+            [[NSRunLoop currentRunLoop] addTimer:alarm forMode:NSRunLoopCommonModes];
+        }
     }
 }
 
@@ -107,6 +134,9 @@
 // sound effect from http://www.soundjay.com/beep-sounds-1.html
 // plays the audio clip which is about 6 seconds long
 -(void)playAudio{
+    UIAlertView *alarm = [[UIAlertView alloc] initWithTitle:self.title message:self.title delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:@"snooze", nil];
+    [alarm setTag:100];
+    [alarm show];
     NSString *path = [[NSBundle mainBundle]
                       pathForResource:@"Fire-alarm" ofType:@"mp3"];
     self.audioPlayer2 = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
