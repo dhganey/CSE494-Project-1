@@ -130,12 +130,14 @@
     
      if ([entries count] == 0)
      {
-     JournalItem* myItem = [[JournalItem alloc] init];
-     myItem.entryTitle = @"New Note";
-     myItem.entryContent = @"You can write a note here!";
-     myItem.entryDate = nil;
-     [entries addObject:myItem];
+         JournalItem* myItem = [[JournalItem alloc] init];
+         myItem.entryTitle = @"New Note";
+         myItem.entryContent = @"You can write a note here!";
+         myItem.entryDate = nil;
+         [entries addObject:myItem];
      }
+    
+    //self.title = @"Journal";
      
 }
 
@@ -168,6 +170,10 @@
      */
     
     //[self saveJournalItems];
+    
+    //self.title = @"Journal";
+    self.navigationController.navigationBar.topItem.title = @"Journal";
+
 }
 
 #pragma mark - Table view data source
