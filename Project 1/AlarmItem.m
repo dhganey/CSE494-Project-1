@@ -48,6 +48,7 @@
         self.minutes = [aDecoder decodeObjectForKey:@"alarmMinutes"];
         self.sound = [aDecoder decodeObjectForKey:@"alarmSound"];
         self.isOn = [aDecoder decodeObjectForKey:@"alarmIsOn"];
+        self.alarmSoundItem = [aDecoder decodeObjectForKey:@"alarmSoundItem"];
     }
     return self;
 }
@@ -61,6 +62,7 @@
     [aCoder encodeObject:self.weekdays forKey:@"alarmWeekdays"];
     [aCoder encodeObject:self.sound forKey:@"alarmSound"];
     [aCoder encodeObject:self.isOn forKey:@"alarmIsOn"];
+    [aCoder encodeObject:self.alarmSoundItem forKey:@"alarmSoundItem"];
 }
 
 // adds a nstimer to the application for the set time
@@ -137,9 +139,17 @@
     UIAlertView *alarm = [[UIAlertView alloc] initWithTitle:self.title message:self.title delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:@"snooze", nil];
     [alarm setTag:100];
     [alarm show];
-    NSString *path = [[NSBundle mainBundle]
+    // load song
+    if (self.alarmSoundItem != NULL){
+        NSURL *songAddress = [self.alarmSoundItem valueForProperty:MPMediaItemPropertyAssetURL];
+        self.audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:songAddress error:NULL];
+    }
+    else {
+        // load default
+        NSString *path = [[NSBundle mainBundle]
                       pathForResource:@"Fire-alarm" ofType:@"mp3"];
-    self.audioPlayer2 = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+        self.audioPlayer2 = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+    }
     [self.audioPlayer2 play];
 }
 @end

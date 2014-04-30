@@ -201,6 +201,7 @@
         temp.minutes = item.minutes;
         temp.weekdays = item.weekdays;
         temp.sound = item.sound;
+        temp.alarmSoundItem = item.alarmSoundItem;
     }
     else // new content
         [alarms addObject:item];
@@ -223,6 +224,7 @@
         NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         nextVC.presetDate = [cal dateFromComponents:components];
         nextVC.days = alarmToEdit.weekdays;
+        nextVC.alarmItem = alarmToEdit.alarmSoundItem;
         rowEdited = selectedRow;
     }
 }

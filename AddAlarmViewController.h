@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <MediaPlayer/MediaPlayer.h>
 #import "AlarmItem.h"
+#import "AlarmSoundViewController.h"
 
 @class AddAlarmViewController;
-@protocol AddAlarmViewControllerDelegate <NSObject>
+@protocol AddAlarmViewControllerDelegate //<NSObject>
 -(void) addItemViewController:(AddAlarmViewController *)controller didFinishEnteringItem:(AlarmItem*) item;
 @end
 
@@ -26,12 +27,13 @@
 @property (nonatomic, weak) id <AddAlarmViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *responseLabel;
 
+
 @property NSDate *presetDate;
 @property NSString *presetTitle;
 @property NSMutableArray *presetWeekdays;
-
+@property MPMediaItem * alarmItem;
+@property (weak, nonatomic) IBOutlet UILabel *alarmSoundLabel;
 @property NSMutableArray * days;
-
 
 @end
 

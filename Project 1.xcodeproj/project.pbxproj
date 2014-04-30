@@ -44,6 +44,7 @@
 		A59D208318E637E800053791 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D208218E637E800053791 /* AVFoundation.framework */; };
 		A59D208518E63A8E00053791 /* audioTest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A59D208418E63A8E00053791 /* audioTest.mp3 */; };
 		A5A2468018E39772000D203A /* AlarmItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A2467F18E39772000D203A /* AlarmItem.m */; };
+		A5A3E1731910C95B0000B6D1 /* AlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A3E1721910C95B0000B6D1 /* AlarmSoundViewController.m */; };
 		A5D141F218E7D64E000B70B6 /* Fire-alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5D141F118E7D64E000B70B6 /* Fire-alarm.mp3 */; };
 		A5D141F618E7F878000B70B6 /* 76.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D141F318E7F877000B70B6 /* 76.png */; };
 		A5D141F718E7F878000B70B6 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D141F418E7F878000B70B6 /* 120.png */; };
@@ -195,6 +196,8 @@
 		A59D208418E63A8E00053791 /* audioTest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audioTest.mp3; sourceTree = "<group>"; };
 		A5A2467E18E39772000D203A /* AlarmItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmItem.h; sourceTree = "<group>"; };
 		A5A2467F18E39772000D203A /* AlarmItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmItem.m; sourceTree = "<group>"; };
+		A5A3E1711910C95B0000B6D1 /* AlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmSoundViewController.h; sourceTree = "<group>"; };
+		A5A3E1721910C95B0000B6D1 /* AlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmSoundViewController.m; sourceTree = "<group>"; };
 		A5D141F118E7D64E000B70B6 /* Fire-alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Fire-alarm.mp3"; sourceTree = "<group>"; };
 		A5D141F318E7F877000B70B6 /* 76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 76.png; sourceTree = "<group>"; };
 		A5D141F418E7F878000B70B6 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
@@ -417,6 +420,8 @@
 				A5A2467F18E39772000D203A /* AlarmItem.m */,
 				A5D8E40918E4CDF600CA66D4 /* AddAlarmViewController.h */,
 				A5D8E40A18E4CDF600CA66D4 /* AddAlarmViewController.m */,
+				A5A3E1711910C95B0000B6D1 /* AlarmSoundViewController.h */,
+				A5A3E1721910C95B0000B6D1 /* AlarmSoundViewController.m */,
 			);
 			name = Alarm;
 			sourceTree = "<group>";
@@ -587,6 +592,7 @@
 				63E7AD9B18CA19CD0086D496 /* ProjectUser.m in Sources */,
 				63E7ADA418CA1C110086D496 /* AlarmViewController.m in Sources */,
 				6329E3B518F5D12400DD4CEE /* TabBarViewController.m in Sources */,
+				A5A3E1731910C95B0000B6D1 /* AlarmSoundViewController.m in Sources */,
 				63FCAE8D18DA319F00E3BC5A /* JournalEntryViewController.m in Sources */,
 				63E7AD9E18CA1AC00086D496 /* MainViewController.m in Sources */,
 				6360491F18C90CB500C0F14B /* main.m in Sources */,

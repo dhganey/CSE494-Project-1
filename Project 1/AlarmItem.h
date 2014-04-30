@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *sound;
 @property (nonatomic, strong) NSTimer  *timer;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer2;
+@property (nonatomic, strong) MPMediaItem *alarmSoundItem;
 -(void) modifyDay:(int)day setValue:(BOOL)newValue;
 -(void) setAlarm;
 

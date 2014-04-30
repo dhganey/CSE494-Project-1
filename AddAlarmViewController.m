@@ -36,6 +36,8 @@
         self.titleField.text = self.presetTitle;
     if (self.presetDate)
         self.timePicker.date = self.presetDate;
+    if(self.alarmItem)
+        self.alarmSoundLabel.text =[self.alarmItem valueForProperty:MPMediaItemPropertyTitle];
     int BUTTON_BASE = 21;
     if (self.days)
     {
@@ -211,6 +213,7 @@
     return daysSelected;
 }
 
+
 // this scrolls the window to the input field
 /*
 -(void)keyboardWillShow:(NSNotification *) notification
@@ -254,15 +257,29 @@
         item.hours = [NSNumber numberWithInteger:[components hour]];
         item.minutes = [NSNumber numberWithInteger:[components minute]];
         item.weekdays = [self getDaysSelected];
+        item.alarmSoundItem = self.alarmItem;
         [self.delegate addItemViewController:self didFinishEnteringItem:item];
-        // goe
+        // return to previous view
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         self.responseLabel.hidden = NO;
     }
 }
+
 - (IBAction)backButtonClicked:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+// segues to alarm sound view controller
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    AlarmSoundViewController *nextVC = segue.destinationViewController;
+    nextVC.delegate = self;
+}
+
+// sets the alarm item
+-(void)addItemViewController:(AlarmSoundViewController *)controller didFinishEnteringItem:(MPMediaItem*) item{
+    self.alarmItem = item;
+    self.alarmSoundLabel.text =[self.alarmItem valueForProperty:MPMediaItemPropertyTitle];
 }
 
 
